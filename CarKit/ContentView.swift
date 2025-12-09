@@ -1,6 +1,6 @@
 //
 //  ContentView.swift
-//  Dreevy
+//  CarKit
 //
 //  Created by Theo Sementa on 09/12/2025.
 //

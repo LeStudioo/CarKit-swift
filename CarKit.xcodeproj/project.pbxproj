@@ -9,10 +9,12 @@
 /* Begin PBXBuildFile section */
 		D90512C32EE84DB800AD088B /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = D90512C22EE84DB800AD088B /* DesignSystem */; };
 		D90513632EE8657E00AD088B /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = D90513622EE8657E00AD088B /* Models */; };
+		D9FA81F52EE89F3800BC35F6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D9FA81F42EE89F3800BC35F6 /* README.md */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		D90512A82EE8493500AD088B /* CarKit.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = CarKit.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		D9FA81F42EE89F3800BC35F6 /* README.md */ = {isa = PBXFileReference; lastKnownFileType = net.daringfireball.markdown; path = README.md; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
@@ -67,6 +69,7 @@
 		D905129F2EE8493500AD088B = {
 			isa = PBXGroup;
 			children = (
+				D9FA81F42EE89F3800BC35F6 /* README.md */,
 				D90512AA2EE8493500AD088B /* CarKit */,
 				D90512BD2EE84A4D00AD088B /* Modules */,
 				D90512C12EE84DB800AD088B /* Frameworks */,
@@ -158,6 +161,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D9FA81F52EE89F3800BC35F6 /* README.md in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
