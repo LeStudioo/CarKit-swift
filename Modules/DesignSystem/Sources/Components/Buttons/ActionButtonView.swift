@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import Models
 
 struct ActionButtonView: View {
 
@@ -13,6 +14,7 @@ struct ActionButtonView: View {
     private let title: String
     private let icon: ImageType?
     private let isFullWidth: Bool
+    private let style: ActionButtonStyle
     private let action: () async -> Void
 
     // MARK: States
@@ -23,11 +25,13 @@ struct ActionButtonView: View {
         title: String,
         icon: ImageType? = nil,
         isFullWidth: Bool = false,
+        style: ActionButtonStyle = .fill,
         action: @escaping () async -> Void
     ) {
         self.title = title
         self.icon = icon
         self.isFullWidth = isFullWidth
+        self.style = style
         self.action = action
     }
 
@@ -40,18 +44,16 @@ struct ActionButtonView: View {
                 isLoading = false
             }
         } label: {
-            Group {
-                if isLoading {
-                    ProgressView()
-                        .foregroundStyle(Color.white)
-                } else {
-                    HStack(spacing: .small) {
-                        Text(title)
-                            .customFont(.Text.Medium.bold, color: .Base.white)
+            if isLoading {
+                ProgressView()
+                    .foregroundStyle(style.foregroundColor)
+            } else {
+                HStack(spacing: .small) {
+                    Text(title)
+                        .customFont(.Text.Medium.bold, color: style.foregroundColor)
 
-                        if let icon {
-                            IconView(asset: icon, size: .medium, color: .Base.white)
-                        }
+                    if let icon {
+                        IconView(asset: icon, size: .medium, color: style.foregroundColor)
                     }
                 }
             }
@@ -59,7 +61,11 @@ struct ActionButtonView: View {
         .frame(maxWidth: isFullWidth ? .infinity : nil)
         .padding(.vertical, .medium)
         .padding(.horizontal, .standard)
-        .roundedBackground(color: .Brand.secondary, radius: .small)
+        .roundedBackground(
+            color: style.backgroundColor,
+            radius: .small,
+            strokeColor: style.strokeColor
+        )
         .animation(.smooth, value: isLoading)
     }
 }
@@ -68,6 +74,9 @@ struct ActionButtonView: View {
 #Preview {
     VStack(spacing: .large) {
         ActionButtonView(title: "Add vehicule", icon: .iconCar) { }
+        ActionButtonView(title: "Add vehicule", icon: .iconCar, style: .secondary) { }
+        ActionButtonView(title: "Add vehicule", icon: .iconCar, style: .clear) { }
+        ActionButtonView(title: "Add vehicule", icon: .iconCar, style: .clearError) { }
         ActionButtonView(title: "Add vehicule", icon: .iconCar, isFullWidth: true) { }
     }
     .padding(.large)
