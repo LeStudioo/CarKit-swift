@@ -13,18 +13,24 @@ public struct CustomEmptyView: View {
     private let image: ImageType
     private let title: String
     private let message: String
-    private let action: (() -> Void)?
+    private let actionButtonTitle: String?
+    private let actionButtonIcon: ImageType?
+    private let action: (() async -> Void)?
 
     // MARK: Init
     public init(
         image: ImageType,
         title: String,
         message: String,
+        actionButtonTitle: String? = nil,
+        actionButtonIcon: ImageType? = nil,
         action: (() -> Void)? = nil
     ) {
         self.image = image
         self.title = title
         self.message = message
+        self.actionButtonTitle = actionButtonTitle
+        self.actionButtonIcon = actionButtonIcon
         self.action = action
     }
 
@@ -45,17 +51,14 @@ public struct CustomEmptyView: View {
                 }
             }
 
-            if let action {
-
+            if let action, let actionButtonTitle {
+                ActionButtonView(
+                    title: actionButtonTitle,
+                    icon: actionButtonIcon
+                ) {
+                    await action()
+                }
             }
-//            ActionButtonView(
-//                config: .init(
-//                    title: "creation_add_car".localized,
-//                    icon: "iconCar",
-//                    style: .primary,
-//                    isFill: false
-//                )
-//            ) { router.push(.car(.create)) }
         }
         .fullSize()
     }
@@ -66,6 +69,8 @@ public struct CustomEmptyView: View {
     CustomEmptyView(
         image: .illuCar,
         title: "No car found",
-        message: "Add a car now for complete tracking! Keep an eye on maintenance, costs, and performance"
-    )
+        message: "Add a car now for complete tracking! Keep an eye on maintenance, costs, and performance",
+        actionButtonTitle: "Add vehicle",
+        actionButtonIcon: .iconCar
+    ) { }
 }

@@ -21,7 +21,7 @@ struct ActionButtonView: View {
     // MARK: Init
     public init(
         title: String,
-        icon: ImageType?,
+        icon: ImageType? = nil,
         isFullWidth: Bool = false,
         action: @escaping () async -> Void
     ) {
