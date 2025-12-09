@@ -9,6 +9,7 @@ import Foundation
 
 public enum ImageType: String {
 
+    case iconArrowLeft
     case iconCar
     case iconChevronRight
     case iconUser

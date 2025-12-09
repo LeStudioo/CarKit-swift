@@ -14,7 +14,7 @@ extension ActionButtonStyle {
     var backgroundColor: Color {
         switch self {
         case .fill:
-            return .Brand.primary
+            return .Brand.secondary
         case .secondary:
             return .Gray.light
         case .clear:
