@@ -4,6 +4,19 @@
 import PackageDescription
 import Foundation
 
+var resources: [Resource] {
+    let isPreview = ProcessInfo.processInfo.environment["XCODE_RUNNING_FOR_PREVIEWS"] == "1"
+
+    if isPreview {
+        return [
+            .process("./Resources/Assets/Assets.xcassets"),
+            .process("./Resources/Assets/Colors.xcassets"),
+            .process("./Resources/Assets/Icons.xcassets"),
+            .process("./Resources/Assets/Illustrations.xcassets")
+        ]
+    } else { return [] }
+}
+
 let package = Package(
     name: "DesignSystem",
     platforms: [.iOS(.v17)],
@@ -19,11 +32,7 @@ let package = Package(
             dependencies: [
                 .product(name: "Models", package: "Models")
             ],
-            resources: [
-                .process("./Resources/Assets/Assets.xcassets"),
-                .process("./Resources/Assets/Colors.xcassets"),
-                .process("./Resources/Assets/Icons.xcassets")
-            ]
+            resources: resources
         )
     ]
 )
