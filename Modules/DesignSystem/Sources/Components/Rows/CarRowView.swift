@@ -96,7 +96,7 @@ extension CarRowView {
             title: "Audi RS6",
             subtitle: "Voiture de Théo"
         )
-        
+
         CarRowView(
             title: "Afla Romeo 147",
             subtitle: "Voiture de Papa"

@@ -26,6 +26,10 @@ public extension View {
         return self.frame(maxWidth: .infinity, alignment: alignment)
     }
 
+    func fullSize(_ alignment: Alignment = .center) -> some View {
+        return self.frame(maxWidth: .infinity, maxHeight: .infinity, alignment: alignment)
+    }
+
     func roundedBackground(
         color: Color,
         radius: CGFloat,
