@@ -9,6 +9,9 @@ import Foundation
 
 public enum IconSizeType: CGFloat {
 
+    /// `Value = 16`
+    case small = 16
+
     /// `Value = 20`
     case medium = 20
 

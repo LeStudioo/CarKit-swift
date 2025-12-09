@@ -8,6 +8,7 @@
 
 /* Begin PBXBuildFile section */
 		D90512C32EE84DB800AD088B /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = D90512C22EE84DB800AD088B /* DesignSystem */; };
+		D90513632EE8657E00AD088B /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = D90513622EE8657E00AD088B /* Models */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -55,6 +56,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D90513632EE8657E00AD088B /* Models in Frameworks */,
 				D90512C32EE84DB800AD088B /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -65,8 +67,8 @@
 		D905129F2EE8493500AD088B = {
 			isa = PBXGroup;
 			children = (
-				D90512BD2EE84A4D00AD088B /* Modules */,
 				D90512AA2EE8493500AD088B /* Dreevy */,
+				D90512BD2EE84A4D00AD088B /* Modules */,
 				D90512C12EE84DB800AD088B /* Frameworks */,
 				D90512A92EE8493500AD088B /* Products */,
 			);
@@ -110,6 +112,7 @@
 			name = Dreevy;
 			packageProductDependencies = (
 				D90512C22EE84DB800AD088B /* DesignSystem */,
+				D90513622EE8657E00AD088B /* Models */,
 			);
 			productName = Dreevy;
 			productReference = D90512A82EE8493500AD088B /* Dreevy.app */;
@@ -136,6 +139,7 @@
 			knownRegions = (
 				en,
 				Base,
+				fr,
 			);
 			mainGroup = D905129F2EE8493500AD088B;
 			minimizedProjectReferenceProxies = 1;
@@ -431,6 +435,10 @@
 		D90512C22EE84DB800AD088B /* DesignSystem */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = DesignSystem;
+		};
+		D90513622EE8657E00AD088B /* Models */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Models;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

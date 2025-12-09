@@ -11,73 +11,73 @@ extension Color {
 
     public struct Base {
         public static var white: Color {
-            return Color("baseWhite", bundle: BundleHelper.bundle)
+            return Color("baseWhite", bundle: .module)
         }
         public static var black: Color {
-            return Color("baseBlack", bundle: BundleHelper.bundle)
+            return Color("baseBlack", bundle: .module)
         }
     }
 
     public struct Brand {
         public static var light: Color {
-            return Color("brandLight", bundle: BundleHelper.bundle)
+            return Color("brandLight", bundle: .module)
         }
         public static var primary: Color {
-            return Color("brandPrimary", bundle: BundleHelper.bundle)
+            return Color("brandPrimary", bundle: .module)
         }
         public static var secondary: Color {
-            return Color("brandSecondary", bundle: BundleHelper.bundle)
+            return Color("brandSecondary", bundle: .module)
         }
         public static var tertiary: Color {
-            return Color("brandTertiary", bundle: BundleHelper.bundle)
+            return Color("brandTertiary", bundle: .module)
         }
     }
 
     public struct Error {
         public static var light: Color {
-            return Color("errorLight", bundle: BundleHelper.bundle)
+            return Color("errorLight", bundle: .module)
         }
         public static var primary: Color {
-            return Color("errorPrimary", bundle: BundleHelper.bundle)
+            return Color("errorPrimary", bundle: .module)
         }
         public static var secondary: Color {
-            return Color("errorSecondary", bundle: BundleHelper.bundle)
+            return Color("errorSecondary", bundle: .module)
         }
     }
 
     public struct Gray {
         public static var light: Color {
-            return Color("grayLight", bundle: BundleHelper.bundle)
+            return Color("grayLight", bundle: .module)
         }
         public static var dark: Color {
-            return Color("grayDark", bundle: BundleHelper.bundle)
+            return Color("grayDark", bundle: .module)
         }
         public static var mid: Color {
-            return Color("grayMid", bundle: BundleHelper.bundle)
+            return Color("grayMid", bundle: .module)
         }
         public static var veryLight: Color {
-            return Color("grayVeryLight", bundle: BundleHelper.bundle)
+            return Color("grayVeryLight", bundle: .module)
         }
         public static var veryDark: Color {
-            return Color("grayVeryDark", bundle: BundleHelper.bundle)
+            return Color("grayVeryDark", bundle: .module)
         }
     }
 
     public struct Success {
         public static var light: Color {
-            return Color("successLight", bundle: BundleHelper.bundle)
+            return Color("successLight", bundle: .module)
         }
         public static var primary: Color {
-            return Color("successPrimary", bundle: BundleHelper.bundle)
+            return Color("successPrimary", bundle: .module)
         }
     }
 
     public struct Warning {
         public static var primary: Color {
-            return Color("warningPrimary", bundle: BundleHelper.bundle)
+            return Color("warningPrimary", bundle: .module)
         }
         public static var secondary: Color {
-            return Color("warningSecondary", bundle: BundleHelper.bundle)
+            return Color("warningSecondary", bundle: .module)
         }
     }
 

@@ -11,14 +11,12 @@ import DesignSystem
 struct ContentView: View {
     var body: some View {
         VStack {
-            Image(systemName: "globe")
-                .imageScale(.large)
-                .foregroundStyle(.tint)
-
-            Image(asset: .iconUser)
-
-            Text("Hello, world!")
-                .customFont(.Display.ExtraSmall.bold, color: .Base.black)
+            ExpenseRowView(
+                price: 180,
+                title: "Hello",
+                subtitle: "Hello subtitle",
+                date: .now
+            )
         }
         .padding()
     }
