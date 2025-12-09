@@ -22,6 +22,13 @@
 			);
 			target = D90512A72EE8493500AD088B /* Dreevy */;
 		};
+		D90512DD2EE84F5100AD088B /* Exceptions for "Modules" folder in "Dreevy" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Models,
+			);
+			target = D90512A72EE8493500AD088B /* Dreevy */;
+		};
 /* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
 
 /* Begin PBXFileSystemSynchronizedRootGroup section */
@@ -35,6 +42,9 @@
 		};
 		D90512BD2EE84A4D00AD088B /* Modules */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D90512DD2EE84F5100AD088B /* Exceptions for "Modules" folder in "Dreevy" target */,
+			);
 			path = Modules;
 			sourceTree = "<group>";
 		};

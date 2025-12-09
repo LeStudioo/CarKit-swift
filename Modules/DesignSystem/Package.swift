@@ -22,9 +22,15 @@ let package = Package(
     products: [
         .library(name: "DesignSystem", targets: ["DesignSystem"])
     ],
+    dependencies: [
+        .package(name: "Models", path: "../Models")
+    ],
     targets: [
         .target(
             name: "DesignSystem",
+            dependencies: [
+                .product(name: "Models", package: "Models")
+            ],
             resources: resources
         )
     ]

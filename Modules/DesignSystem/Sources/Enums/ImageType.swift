@@ -10,5 +10,6 @@ import Foundation
 public enum ImageType: String {
 
     case iconUser
+    case iconXmark
 
 }

@@ -26,9 +26,17 @@ public extension View {
         return self.frame(maxWidth: .infinity, alignment: alignment)
     }
 
-    func roundedBackground(color: Color, radius: CGFloat) -> some View {
+    func roundedBackground(
+        color: Color,
+        radius: CGFloat,
+        strokeColor: Color? = nil,
+    ) -> some View {
         return self
-            .background(color, in: .rect(cornerRadius: radius, style: .continuous))
+            .background(
+                RoundedRectangle(cornerRadius: radius, style: .continuous)
+                    .fill(color)
+                    .strokeBorder(strokeColor ?? .clear, lineWidth: 1)
+            )
     }
 
 }
