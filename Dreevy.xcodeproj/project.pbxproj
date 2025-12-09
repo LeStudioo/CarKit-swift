@@ -6,14 +6,36 @@
 	objectVersion = 77;
 	objects = {
 
+/* Begin PBXBuildFile section */
+		D90512C32EE84DB800AD088B /* DesignSystem in Frameworks */ = {isa = PBXBuildFile; productRef = D90512C22EE84DB800AD088B /* DesignSystem */; };
+/* End PBXBuildFile section */
+
 /* Begin PBXFileReference section */
 		D90512A82EE8493500AD088B /* Dreevy.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Dreevy.app; sourceTree = BUILT_PRODUCTS_DIR; };
 /* End PBXFileReference section */
 
+/* Begin PBXFileSystemSynchronizedBuildFileExceptionSet section */
+		D90512DB2EE84DEF00AD088B /* Exceptions for "Dreevy" folder in "Dreevy" target */ = {
+			isa = PBXFileSystemSynchronizedBuildFileExceptionSet;
+			membershipExceptions = (
+				Info.plist,
+			);
+			target = D90512A72EE8493500AD088B /* Dreevy */;
+		};
+/* End PBXFileSystemSynchronizedBuildFileExceptionSet section */
+
 /* Begin PBXFileSystemSynchronizedRootGroup section */
 		D90512AA2EE8493500AD088B /* Dreevy */ = {
 			isa = PBXFileSystemSynchronizedRootGroup;
+			exceptions = (
+				D90512DB2EE84DEF00AD088B /* Exceptions for "Dreevy" folder in "Dreevy" target */,
+			);
 			path = Dreevy;
+			sourceTree = "<group>";
+		};
+		D90512BD2EE84A4D00AD088B /* Modules */ = {
+			isa = PBXFileSystemSynchronizedRootGroup;
+			path = Modules;
 			sourceTree = "<group>";
 		};
 /* End PBXFileSystemSynchronizedRootGroup section */
@@ -23,6 +45,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D90512C32EE84DB800AD088B /* DesignSystem in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -32,7 +55,9 @@
 		D905129F2EE8493500AD088B = {
 			isa = PBXGroup;
 			children = (
+				D90512BD2EE84A4D00AD088B /* Modules */,
 				D90512AA2EE8493500AD088B /* Dreevy */,
+				D90512C12EE84DB800AD088B /* Frameworks */,
 				D90512A92EE8493500AD088B /* Products */,
 			);
 			sourceTree = "<group>";
@@ -43,6 +68,13 @@
 				D90512A82EE8493500AD088B /* Dreevy.app */,
 			);
 			name = Products;
+			sourceTree = "<group>";
+		};
+		D90512C12EE84DB800AD088B /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			name = Frameworks;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -63,9 +95,11 @@
 			);
 			fileSystemSynchronizedGroups = (
 				D90512AA2EE8493500AD088B /* Dreevy */,
+				D90512BD2EE84A4D00AD088B /* Modules */,
 			);
 			name = Dreevy;
 			packageProductDependencies = (
+				D90512C22EE84DB800AD088B /* DesignSystem */,
 			);
 			productName = Dreevy;
 			productReference = D90512A82EE8493500AD088B /* Dreevy.app */;
@@ -278,6 +312,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Dreevy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dreevy - Car Tracking";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -325,6 +360,7 @@
 				ENABLE_USER_SCRIPT_SANDBOXING = NO;
 				ENABLE_USER_SELECTED_FILES = readonly;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_FILE = Dreevy/Info.plist;
 				INFOPLIST_KEY_CFBundleDisplayName = "Dreevy - Car Tracking";
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphoneos*]" = YES;
 				"INFOPLIST_KEY_UIApplicationSceneManifest_Generation[sdk=iphonesimulator*]" = YES;
@@ -380,6 +416,13 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		D90512C22EE84DB800AD088B /* DesignSystem */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = DesignSystem;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = D90512A02EE8493500AD088B /* Project object */;
 }

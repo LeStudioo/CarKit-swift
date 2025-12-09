@@ -6,6 +6,7 @@
 //
 
 import SwiftUI
+import DesignSystem
 
 struct ContentView: View {
     var body: some View {
@@ -13,7 +14,11 @@ struct ContentView: View {
             Image(systemName: "globe")
                 .imageScale(.large)
                 .foregroundStyle(.tint)
+            
+            Image(asset: .iconUser)
+            
             Text("Hello, world!")
+                .customFont(.Display.ExtraSmall.bold, color: .Base.black)
         }
         .padding()
     }
