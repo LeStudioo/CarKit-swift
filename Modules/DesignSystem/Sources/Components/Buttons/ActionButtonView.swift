@@ -44,29 +44,32 @@ struct ActionButtonView: View {
                 isLoading = false
             }
         } label: {
-            if isLoading {
-                ProgressView()
-                    .foregroundStyle(style.foregroundColor)
-            } else {
-                HStack(spacing: .small) {
-                    Text(title)
-                        .customFont(.Text.Medium.bold, color: style.foregroundColor)
-
-                    if let icon {
-                        IconView(asset: icon, size: .medium, color: style.foregroundColor)
+            Group {
+                if isLoading {
+                    ProgressView()
+                        .foregroundStyle(style.foregroundColor)
+                } else {
+                    HStack(spacing: .small) {
+                        Text(title)
+                            .customFont(.Text.Medium.bold, color: style.foregroundColor)
+                        
+                        if let icon {
+                            IconView(asset: icon, size: .medium, color: style.foregroundColor)
+                        }
                     }
                 }
             }
+            .frame(maxWidth: isFullWidth ? .infinity : nil)
+            .padding(.vertical, .medium)
+            .padding(.horizontal, .standard)
+            .roundedBackground(
+                color: style.backgroundColor,
+                radius: .small,
+                strokeColor: style.strokeColor
+            )
         }
-        .frame(maxWidth: isFullWidth ? .infinity : nil)
-        .padding(.vertical, .medium)
-        .padding(.horizontal, .standard)
-        .roundedBackground(
-            color: style.backgroundColor,
-            radius: .small,
-            strokeColor: style.strokeColor
-        )
         .animation(.smooth, value: isLoading)
+        .disabled(isLoading)
     }
 }
 

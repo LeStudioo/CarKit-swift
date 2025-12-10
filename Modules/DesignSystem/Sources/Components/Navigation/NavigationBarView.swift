@@ -8,7 +8,7 @@
 import SwiftUI
 import Models
 
-struct NavigationBarView: View {
+public struct NavigationBarView: View {
 
     // MARK: Dependencies
     private let title: String
@@ -39,7 +39,7 @@ struct NavigationBarView: View {
     }
 
     // MARK: - View
-    var body: some View {
+    public var body: some View {
         VStack(spacing: .zero) {
             HStack {
                 VStack(alignment: .leading, spacing: .zero) {
