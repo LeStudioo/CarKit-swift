@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MotorizationType: Sendable {
+public enum MotorizationType: Sendable, Codable {
     case thermal
     case hybrid
     case electric

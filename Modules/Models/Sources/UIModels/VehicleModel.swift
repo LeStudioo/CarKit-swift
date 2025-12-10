@@ -7,7 +7,7 @@
 
 import Foundation
 
-public struct VehicleModel: Sendable {
+public struct VehicleUIModel: Sendable {
     public let id: String
     public var brand: String
     public var model: String

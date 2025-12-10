@@ -12,7 +12,7 @@ import Dependencies
 @Observable
 public final class VehicleStore: @unchecked Sendable {
     
-    public var vehicles: [VehicleModel] = []
+    public var vehicles: [VehicleUIModel] = []
     
 }
 

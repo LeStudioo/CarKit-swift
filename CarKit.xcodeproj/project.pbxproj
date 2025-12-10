@@ -12,6 +12,9 @@
 		D92E1B122EE93A0700B20317 /* Home in Frameworks */ = {isa = PBXBuildFile; productRef = D92E1B112EE93A0700B20317 /* Home */; };
 		D92E1B172EE93F1F00B20317 /* Stores in Frameworks */ = {isa = PBXBuildFile; productRef = D92E1B162EE93F1F00B20317 /* Stores */; };
 		D92E1B1E2EE95FC800B20317 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = D92E1B1D2EE95FC800B20317 /* Networking */; };
+		D92E1CA92EE970DF00B20317 /* Persistence in Frameworks */ = {isa = PBXBuildFile; productRef = D92E1CA82EE970DF00B20317 /* Persistence */; };
+		D92E1CAB2EE970E300B20317 /* Repositories in Frameworks */ = {isa = PBXBuildFile; productRef = D92E1CAA2EE970E300B20317 /* Repositories */; };
+		D92E1CAD2EE970E600B20317 /* Navigation in Frameworks */ = {isa = PBXBuildFile; productRef = D92E1CAC2EE970E600B20317 /* Navigation */; };
 		D9FA81F52EE89F3800BC35F6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D9FA81F42EE89F3800BC35F6 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -61,6 +64,9 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D92E1CAB2EE970E300B20317 /* Repositories in Frameworks */,
+				D92E1CA92EE970DF00B20317 /* Persistence in Frameworks */,
+				D92E1CAD2EE970E600B20317 /* Navigation in Frameworks */,
 				D90513632EE8657E00AD088B /* Models in Frameworks */,
 				D90512C32EE84DB800AD088B /* DesignSystem in Frameworks */,
 				D92E1B172EE93F1F00B20317 /* Stores in Frameworks */,
@@ -125,6 +131,9 @@
 				D92E1B112EE93A0700B20317 /* Home */,
 				D92E1B162EE93F1F00B20317 /* Stores */,
 				D92E1B1D2EE95FC800B20317 /* Networking */,
+				D92E1CA82EE970DF00B20317 /* Persistence */,
+				D92E1CAA2EE970E300B20317 /* Repositories */,
+				D92E1CAC2EE970E600B20317 /* Navigation */,
 			);
 			productName = Dreevy;
 			productReference = D90512A82EE8493500AD088B /* CarKit.app */;
@@ -464,6 +473,18 @@
 		D92E1B1D2EE95FC800B20317 /* Networking */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Networking;
+		};
+		D92E1CA82EE970DF00B20317 /* Persistence */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Persistence;
+		};
+		D92E1CAA2EE970E300B20317 /* Repositories */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Repositories;
+		};
+		D92E1CAC2EE970E600B20317 /* Navigation */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Navigation;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

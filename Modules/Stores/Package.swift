@@ -14,6 +14,8 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Models", path: "../Models"),
+        .package(name: "Networking", path: "../Networking"),
+        .package(name: "Repositories", path: "../Repositories"),
         
         .package(url: "https://github.com/pointfreeco/swift-dependencies", exact: "1.10.0")
     ],
@@ -22,6 +24,8 @@ let package = Package(
             name: "Stores",
             dependencies: [
                 .product(name: "Models", package: "Models"),
+                .product(name: "Networking", package: "Networking"),
+                .product(name: "Repositories", package: "Repositories"),
                 .product(name: "Dependencies", package: "swift-dependencies")
             ]
         )
