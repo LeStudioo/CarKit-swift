@@ -6,12 +6,16 @@
 //
 
 import SwiftUI
+import Navigation
 import DesignSystem
 
 public struct HomeScreen: View {
     
     // MARK: States
     @State private var viewModel: ViewModel = .init()
+    
+    // MARK: Environments
+    @EnvironmentObject private var router: Router<AppDestination>
     
     // MARK: Init
     public init() { }
@@ -26,23 +30,43 @@ public struct HomeScreen: View {
                 .padding(.top, .large)
             
             if viewModel.hasVehicles {
-                
+                VStack(spacing: .standard) {
+                    ForEach(viewModel.vehicleStore.vehicles) { vehicle in
+                        VehicleRowView(
+                            uiImage: UIImage(data: vehicle.imageData ?? Data()),
+                            title: vehicle.fullName,
+                            subtitle: vehicle.customName
+                        )
+                    }
+                    
+                    ActionButtonView( // TODO: TBL
+                        title: "Add vehicle",
+                        icon: .iconCar,
+                        isFullWidth: true,
+                        style: .clear,
+                        action: { router.push(.vehicle(.create)) }
+                    )
+                }
+                .padding(.horizontal, .large)
+                .padding(.top, .standard)
             } else {
                 CustomEmptyView(
                     image: .illuCar,
                     title: "home_empty_title".localized,
                     message: "home_empty_message".localized,
                     actionButtonTitle: "home_empty_button".localized,
-                    actionButtonIcon: .iconCar) {
-                        
-                    }
-                    .padding(.horizontal, .large)
+                    actionButtonIcon: .iconCar,
+                    action: { router.push(.vehicle(.create)) }
+                )
+                .padding(.horizontal, .large)
             }
         }
         .fullSize(.top)
         .background(Color.Gray.veryLight)
+        .task {
+            await viewModel.vehicleStore.fetchAll()
+        }
     }
-    
 }
 
 // MARK: - Subviews

@@ -8,7 +8,7 @@
 import SwiftUI
 import Models
 
-struct ActionButtonView: View {
+public struct ActionButtonView: View {
 
     // MARK: Dependencies
     private let title: String
@@ -36,7 +36,7 @@ struct ActionButtonView: View {
     }
 
     // MARK: -
-    var body: some View {
+    public var body: some View {
         Button {
             Task {
                 isLoading = true

@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum ServiceType: String, CaseIterable {
+public enum ServiceType: String, APIModel {
     case carWash
     case oilChange
     case vacuum

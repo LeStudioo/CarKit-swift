@@ -1,5 +1,5 @@
 {
-  "originHash" : "fcbfb22f968e1a29d7c583843a3e23f036c8b743ee5a15a7934a7fc9d1347342",
+  "originHash" : "59a175a7932de089fb8236a54876a66d113fedbafa4a8a864d5e661ed2442956",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -17,6 +17,15 @@
       "state" : {
         "branch" : "1.0.4",
         "revision" : "ea3994dfc56e8585339412cf59c51c302dc5f46c"
+      }
+    },
+    {
+      "identity" : "navigationkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/theosementa/NavigationKit",
+      "state" : {
+        "branch" : "2.0.6",
+        "revision" : "c29af76db21396960ab5a79b0f390f1b77a94e36"
       }
     },
     {

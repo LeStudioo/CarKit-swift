@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum MotorizationType: String, Sendable, Codable {
+public enum MotorizationType: String, APIModel {
     case none
     case thermal
     case hybrid

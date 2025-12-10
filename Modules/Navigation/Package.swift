@@ -12,9 +12,15 @@ let package = Package(
             targets: ["Navigation"]
         )
     ],
+    dependencies: [
+        .package(url: "https://github.com/theosementa/NavigationKit", branch: "2.0.6")
+    ],
     targets: [
         .target(
-            name: "Navigation"
+            name: "Navigation",
+            dependencies: [
+                .product(name: "NavigationKit", package: "NavigationKit")
+            ]
         )
     ]
 )

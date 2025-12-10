@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum RecurrenceType: String {
+public enum RecurrenceType: String, APIModel {
     case none
     case weekly
     case monthly

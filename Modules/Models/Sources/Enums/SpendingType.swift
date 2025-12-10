@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum SpendingType: String, CaseIterable {
+public enum SpendingType: String, APIModel {
     case vehiclePart
     case service
     case fuel

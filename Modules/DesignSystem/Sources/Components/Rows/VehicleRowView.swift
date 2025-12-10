@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct CarRowView: View {
+public struct VehicleRowView: View {
 
     // MARK: Dependencies
     private let uiImage: UIImage?
@@ -50,7 +50,7 @@ public struct CarRowView: View {
 }
 
 // MARK: - Subviews
-extension CarRowView {
+extension VehicleRowView {
 
     func imageView(for uiImage: UIImage) -> some View {
         Image(uiImage: uiImage)
@@ -91,13 +91,13 @@ extension CarRowView {
 // MARK: - Preview
 #Preview {
     VStack(spacing: .large) {
-        CarRowView(
+        VehicleRowView(
             uiImage: UIImage(resource: .previewCar),
             title: "Audi RS6",
             subtitle: "Voiture de Théo"
         )
 
-        CarRowView(
+        VehicleRowView(
             title: "Afla Romeo 147",
             subtitle: "Voiture de Papa"
         )

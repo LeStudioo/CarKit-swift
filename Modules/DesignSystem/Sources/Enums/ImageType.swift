@@ -11,6 +11,7 @@ public enum ImageType: String {
 
     case iconArrowLeft
     case iconCar
+    case iconChevronDown
     case iconChevronRight
     case iconUser
     case iconXmark

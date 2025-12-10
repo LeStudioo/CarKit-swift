@@ -6,14 +6,24 @@
 //
 
 import SwiftUI
+import Navigation
 import Home
 
 struct RootScreen: View {
+    
+    @StateObject private var router: Router<AppDestination> = .init()
+    
+    // MARK: - View
     var body: some View {
-        HomeScreen()
+        NavigationStackView(
+            router: router,
+            destinationContent: { AppDestination.content(for: $0) },
+            initialContent: { HomeScreen() }
+        )
     }
 }
 
+// MARK: - Preview
 #Preview {
     RootScreen()
 }

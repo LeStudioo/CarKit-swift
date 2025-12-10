@@ -23,14 +23,29 @@ public extension VehicleStore {
     
     func fetchAll() async {
         do {
-            if NetworkMonitor.shared.isConnected {
-                let vehiclesFromAPI = try await VehicleService.fetchAll()
-                let vehiclesUI = vehiclesFromAPI.map { $0.toUIModel() }
-                self.vehicles = vehiclesUI
-            } else {
+//            if NetworkMonitor.shared.isConnected {
+//                let vehiclesFromAPI = try await VehicleService.fetchAll()
+//                let vehiclesUI = vehiclesFromAPI.map { $0.toUIModel() }
+//                self.vehicles = vehiclesUI
+//            } else {
                 let vehiclesFromLocal = try vehicleRepo.fetchAll()
                 let vehiclesUI = vehiclesFromLocal.map { $0.toUIModel() }
                 self.vehicles = vehiclesUI
+//            }
+        } catch {
+            
+        }
+    }
+    
+    func create(body: VehicleBody) async {
+        do {
+            let entity = body.toEntity()
+            try vehicleRepo.insert(entity)
+            vehicles.append(entity.toUIModel())
+            
+            if NetworkMonitor.shared.isConnected {
+                let vehicleFromAPI = try await VehicleService.create(body: body)
+                entity.remoteId = vehicleFromAPI.id
             }
         } catch {
             

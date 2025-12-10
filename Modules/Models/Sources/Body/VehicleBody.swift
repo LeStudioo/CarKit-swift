@@ -8,27 +8,27 @@
 import Foundation
 
 public struct VehicleBody: APIModel {
-    public var constructor: String?
+    public var brand: String?
     public var model: String?
-    public var name: String?
+    public var customName: String?
 
-    public var image: Data?
+    public var imageData: Data?
 
     public var year: Int?
     public var motorization: String?
     
     private init(
-        constructor: String? = nil,
+        brand: String? = nil,
         model: String? = nil,
-        name: String? = nil,
-        image: Data? = nil,
+        customName: String? = nil,
+        imageData: Data? = nil,
         year: Int? = nil,
         motorization: String? = nil
     ) {
-        self.constructor = constructor
+        self.brand = brand
         self.model = model
-        self.name = name
-        self.image = image
+        self.customName = customName
+        self.imageData = imageData
         self.year = year
         self.motorization = motorization
     }
@@ -37,38 +37,54 @@ public struct VehicleBody: APIModel {
 public extension VehicleBody {
     
     static func create(
-        constructor: String,
+        brand: String,
         model: String,
-        name: String? = nil,
-        image: Data? = nil,
+        customName: String? = nil,
+        imageData: Data? = nil,
         year: Int? = nil,
         motorization: String
     ) -> VehicleBody {
         return .init(
-            constructor: constructor,
+            brand: brand,
             model: model,
-            name: name,
-            image: image,
+            customName: customName,
+            imageData: imageData,
             year: year,
             motorization: motorization
         )
     }
     
     static func update(
-        constructor: String? = nil,
+        brand: String? = nil,
         model: String? = nil,
-        name: String? = nil,
-        image: Data? = nil,
+        customName: String? = nil,
+        imageData: Data? = nil,
         year: Int? = nil,
         motorization: String? = nil
     ) -> VehicleBody {
         return .init(
-            constructor: constructor,
+            brand: brand,
             model: model,
-            name: name,
-            image: image,
+            customName: customName,
+            imageData: imageData,
             year: year,
             motorization: motorization
+        )
+    }
+    
+}
+
+// MARK: - Mappers
+public extension VehicleBody {
+    
+    func toEntity() -> VehicleEntity {
+        return .init(
+            brand: brand ?? "",
+            model: model ?? "",
+            customName: customName,
+            imageLocal: imageData,
+            year: year,
+            motorization: MotorizationType(rawValue: motorization ?? "") ?? .none
         )
     }
     
