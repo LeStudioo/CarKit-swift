@@ -8,30 +8,35 @@
 import SwiftUI
 import DesignSystem
 
-struct HomeScreen: View {
+public struct HomeScreen: View {
     
     // MARK: States
     @State private var viewModel: ViewModel = .init()
     
+    // MARK: Init
+    public init() { }
+    
     // MARK: - View
-    var body: some View {
+    public var body: some View {
         VStack(spacing: .zero) {
             NavigationBarView(title: "CarKit") { }
             
             myVehiclesHeaderView
-                .padding(.large)
+                .padding(.horizontal, .large)
+                .padding(.top, .large)
             
             if viewModel.hasVehicles {
                 
             } else {
-                CustomEmptyView( // TODO: TBL
+                CustomEmptyView(
                     image: .illuCar,
-                    title: "No car found",
-                    message: "Add a car now for complete tracking! Keep an eye on maintenance, costs, and performance",
-                    actionButtonTitle: "Add vehicle",
+                    title: "home_empty_title".localized,
+                    message: "home_empty_message".localized,
+                    actionButtonTitle: "home_empty_button".localized,
                     actionButtonIcon: .iconCar) {
                         
                     }
+                    .padding(.horizontal, .large)
             }
         }
         .fullSize(.top)
@@ -43,8 +48,8 @@ struct HomeScreen: View {
 // MARK: - Subviews
 extension HomeScreen {
     
-    var myVehiclesHeaderView: some View {
-        Text("My vehicles") // TODO: TBL
+    private var myVehiclesHeaderView: some View {
+        Text("home_my_vehicle_header".localized)
             .customFont(.Text.Medium.bold, color: .Gray.veryDark)
             .fullWidth(.leading)
     }

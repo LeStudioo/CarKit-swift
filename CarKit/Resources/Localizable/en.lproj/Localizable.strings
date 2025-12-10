@@ -1,7 +1,12 @@
-/* 
-  Localizable.strings
-  CarKit
+/*  */
+"home_empty_button" = "Add vehicle";
 
-  Created by Theo Sementa on 09/12/2025.
-  
-*/
+/*  */
+"home_empty_message" = "Add a car now for complete tracking! Keep an eye on maintenance, costs, and performance";
+
+/*  */
+"home_empty_title" = "No vehicles found";
+
+/*  */
+"home_my_vehicle_header" = "My vehicles";
+

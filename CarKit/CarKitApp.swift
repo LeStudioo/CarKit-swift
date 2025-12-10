@@ -12,7 +12,7 @@ import Observation
 struct CarKitApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            RootScreen()
         }
     }
 }

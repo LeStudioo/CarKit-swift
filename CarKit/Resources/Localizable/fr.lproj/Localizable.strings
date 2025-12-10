@@ -1,7 +1,12 @@
-/* 
-  Localizable.strings
-  CarKit
+/*  */
+"home_empty_button" = "Ajouter un véhicule";
 
-  Created by Theo Sementa on 09/12/2025.
-  
-*/
+/*  */
+"home_empty_message" = "Ajoutez une voiture dès maintenant pour un suivi complet ! Gardez un œil sur l'entretien, les coûts et les performances.";
+
+/*  */
+"home_empty_title" = "Aucun véhicules trouvé";
+
+/*  */
+"home_my_vehicle_header" = "Mes véhicules";
+
