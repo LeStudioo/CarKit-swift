@@ -11,7 +11,7 @@ import NetworkKit
 
 public struct VehicleService: VehicleServiceProtocol {
     
-    public func fetchAll() async throws -> [VehicleAPIModel] {
+    public static func fetchAll() async throws -> [VehicleAPIModel] {
         let response = try await NetworkService.sendRequest(
             apiBuilder: VehicleAPIRequester.fetchAll,
             responseModel: [VehicleAPIModel].self
@@ -19,7 +19,7 @@ public struct VehicleService: VehicleServiceProtocol {
         return response
     }
     
-    public func fetchOne(by carId: String) async throws -> VehicleAPIModel {
+    public static func fetchOne(by carId: String) async throws -> VehicleAPIModel {
         let response = try await NetworkService.sendRequest(
             apiBuilder: VehicleAPIRequester.fetchOne(carId: carId),
             responseModel: VehicleAPIModel.self
@@ -27,7 +27,7 @@ public struct VehicleService: VehicleServiceProtocol {
         return response
     }
     
-    public func create(body: VehicleBody) async throws -> VehicleAPIModel {
+    public static func create(body: VehicleBody) async throws -> VehicleAPIModel {
         let response = try await NetworkService.sendRequest(
             apiBuilder: VehicleAPIRequester.create(body: body),
             responseModel: VehicleAPIModel.self
@@ -35,7 +35,7 @@ public struct VehicleService: VehicleServiceProtocol {
         return response
     }
     
-    public func update(for carId: String, body: VehicleBody) async throws -> VehicleAPIModel {
+    public static func update(for carId: String, body: VehicleBody) async throws -> VehicleAPIModel {
         let response = try await NetworkService.sendRequest(
             apiBuilder: VehicleAPIRequester.update(carId: carId, body: body),
             responseModel: VehicleAPIModel.self
@@ -43,11 +43,10 @@ public struct VehicleService: VehicleServiceProtocol {
         return response
     }
     
-    public func delete(for carId: String) async throws {
+    public static func delete(for carId: String) async throws {
         try await NetworkService.sendRequest(
             apiBuilder: VehicleAPIRequester.delete(carId: carId)
         )
     }
-    
     
 }

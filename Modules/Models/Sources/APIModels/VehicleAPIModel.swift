@@ -9,30 +9,48 @@ import Foundation
 
 public struct VehicleAPIModel: APIModel {
     public let id: String
-    public var constructor: String
+    public var brand: String
     public var model: String
-    public var name: String?
+    public var customName: String?
 
-    public var image: Data?
+    public var imageUrl: String?
 
     public var year: Int?
     public var motorization: String
     
     public init(
         id: String,
-        constructor: String,
+        brand: String,
         model: String,
-        name: String? = nil,
-        image: Data? = nil,
+        customName: String? = nil,
+        imageUrl: String? = nil,
         year: Int? = nil,
         motorization: String
     ) {
         self.id = id
-        self.constructor = constructor
+        self.brand = brand
         self.model = model
-        self.name = name
-        self.image = image
+        self.customName = customName
+        self.imageUrl = imageUrl
         self.year = year
         self.motorization = motorization
     }
+}
+
+// MARK: - Mappers
+public extension VehicleAPIModel {
+    
+    func toUIModel() -> VehicleUIModel {
+        return .init(
+            id: id,
+            brand: brand,
+            model: model,
+            customName: customName,
+            imageUrl: imageUrl,
+            year: year,
+            motorization: MotorizationType(rawValue: motorization) ?? .none,
+            isLocalModel: false
+        )
+    }
+    
 }

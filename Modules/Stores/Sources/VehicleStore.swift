@@ -8,16 +8,39 @@
 import Foundation
 import Models
 import Dependencies
+import Networking
+import Repositories
 
-@Observable
+@MainActor @Observable
 public final class VehicleStore: @unchecked Sendable {
     
     public var vehicles: [VehicleUIModel] = []
     
+    private let vehicleRepo: VehicleRepository = .init()
+}
+
+public extension VehicleStore {
+    
+    func fetchAll() async {
+        do {
+            if NetworkMonitor.shared.isConnected {
+                let vehiclesFromAPI = try await VehicleService.fetchAll()
+                let vehiclesUI = vehiclesFromAPI.map { $0.toUIModel() }
+                self.vehicles = vehiclesUI
+            } else {
+                let vehiclesFromLocal = try vehicleRepo.fetchAll()
+                let vehiclesUI = vehiclesFromLocal.map { $0.toUIModel() }
+                self.vehicles = vehiclesUI
+            }
+        } catch {
+            
+        }
+    }
+    
 }
 
 // MARK: - Dependencies
-extension VehicleStore: DependencyKey {
+extension VehicleStore: @preconcurrency DependencyKey {
     public static let liveValue = VehicleStore()
 }
 

@@ -9,9 +9,9 @@ import Foundation
 import Models
 
 public protocol VehicleServiceProtocol {
-    func fetchAll() async throws -> [VehicleAPIModel]
-    func fetchOne(by carId: String) async throws -> VehicleAPIModel
-    func create(body: VehicleBody) async throws -> VehicleAPIModel
-    func update(for carId: String, body: VehicleBody) async throws -> VehicleAPIModel
-    func delete(for carId: String) async throws
+    static func fetchAll() async throws -> [VehicleAPIModel]
+    static func fetchOne(by carId: String) async throws -> VehicleAPIModel
+    static func create(body: VehicleBody) async throws -> VehicleAPIModel
+    static func update(for carId: String, body: VehicleBody) async throws -> VehicleAPIModel
+    static func delete(for carId: String) async throws
 }

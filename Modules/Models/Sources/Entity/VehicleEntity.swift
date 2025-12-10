@@ -14,11 +14,10 @@ public class VehicleEntity {
     public var localId: UUID
     public var remoteId: String?
     
-    public var constructor: String
+    public var brand: String
     public var model: String
-    public var name: String?
+    public var customName: String?
     
-    public var imageUrl: String?
     public var imageLocal: Data?
     
     public var year: Int?
@@ -26,32 +25,45 @@ public class VehicleEntity {
     
     public var createdAt: Date
     public var updatedAt: Date?
-    public var deletedAt: Date?
     
     public init(
         remoteId: String? = nil,
-        constructor: String,
+        brand: String,
         model: String,
-        name: String? = nil,
-        imageUrl: String? = nil,
+        customName: String? = nil,
         imageLocal: Data? = nil,
         year: Int? = nil,
         motorization: MotorizationType,
-        updatedAt: Date? = nil,
-        deletedAt: Date? = nil
+        updatedAt: Date? = nil
     ) {
         self.localId = UUID()
         self.remoteId = remoteId
-        self.constructor = constructor
+        self.brand = brand
         self.model = model
-        self.name = name
-        self.imageUrl = imageUrl
+        self.customName = customName
         self.imageLocal = imageLocal
         self.year = year
         self.motorization = motorization
         self.createdAt = Date()
         self.updatedAt = updatedAt
-        self.deletedAt = deletedAt
     }
 
+}
+
+// MARK: - Mappers
+public extension VehicleEntity {
+    
+    func toUIModel() -> VehicleUIModel {
+        return .init(
+            id: localId.uuidString,
+            brand: brand,
+            model: model,
+            customName: customName,
+            imageData: imageLocal,
+            year: year,
+            motorization: motorization,
+            isLocalModel: true
+        )
+    }
+    
 }

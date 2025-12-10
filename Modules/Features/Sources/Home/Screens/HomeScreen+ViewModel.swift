@@ -11,7 +11,7 @@ import Stores
 // MARK: - Stored variables
 extension HomeScreen {
     
-    @Observable
+    @Observable @MainActor
     final class ViewModel {
         
         @ObservationIgnored
