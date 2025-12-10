@@ -22,7 +22,7 @@ struct NavigationBarView: View {
     @Environment(\.dismiss) private var dismiss
 
     // MARK: Init
-    public init(
+    private init(
         title: String,
         subtitle: String? = nil,
         hasBackButton: Bool = true,
@@ -76,6 +76,49 @@ struct NavigationBarView: View {
     }
 }
 
+extension NavigationBarView {
+    
+    /// home
+    public init(
+        title: String,
+        userButtonAction: @escaping () -> Void
+    ) {
+        self.title = title
+        self.subtitle = nil
+        self.hasBackButton = false
+        self.backButtonText = nil
+        self.style = .home
+        self.userButtonAction = userButtonAction
+    }
+    
+    /// navigation
+    public init(
+        title: String,
+        backButtonText: String
+    ) {
+        self.title = title
+        self.subtitle = nil
+        self.hasBackButton = true
+        self.backButtonText = backButtonText
+        self.style = .navigation
+        self.userButtonAction = nil
+    }
+    
+    /// small navigation
+    public init(
+        title: String,
+        subtitle: String
+    ) {
+        self.title = title
+        self.subtitle = subtitle
+        self.hasBackButton = true
+        self.backButtonText = nil
+        self.style = .smallNavigation
+        self.userButtonAction = nil
+    }
+    
+}
+
 // MARK: - Subviews
 extension NavigationBarView {
 
@@ -127,24 +170,19 @@ extension NavigationBarView {
     VStack(spacing: .large) {
         NavigationBarView(
             title: "CarKit",
-            hasBackButton: false,
-            style: .home,
-            userButtonAction: {  }
+            userButtonAction: { }
         )
         .background(Color.blue.opacity(0.3))
 
         NavigationBarView(
             title: "CarKit",
-            backButtonText: "Home",
-            style: .navigation
+            backButtonText: "Home"
         )
         .background(Color.blue.opacity(0.3))
 
         NavigationBarView(
             title: "Add Spending",
-            subtitle: "Theo’s Car",
-            hasBackButton: true,
-            style: .smallNavigation
+            subtitle: "Theo’s Car"
         )
         .background(Color.blue.opacity(0.3))
     }
