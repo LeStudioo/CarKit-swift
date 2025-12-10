@@ -11,6 +11,7 @@
 		D90513632EE8657E00AD088B /* Models in Frameworks */ = {isa = PBXBuildFile; productRef = D90513622EE8657E00AD088B /* Models */; };
 		D92E1B122EE93A0700B20317 /* Home in Frameworks */ = {isa = PBXBuildFile; productRef = D92E1B112EE93A0700B20317 /* Home */; };
 		D92E1B172EE93F1F00B20317 /* Stores in Frameworks */ = {isa = PBXBuildFile; productRef = D92E1B162EE93F1F00B20317 /* Stores */; };
+		D92E1B1E2EE95FC800B20317 /* Networking in Frameworks */ = {isa = PBXBuildFile; productRef = D92E1B1D2EE95FC800B20317 /* Networking */; };
 		D9FA81F52EE89F3800BC35F6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D9FA81F42EE89F3800BC35F6 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -63,6 +64,7 @@
 				D90513632EE8657E00AD088B /* Models in Frameworks */,
 				D90512C32EE84DB800AD088B /* DesignSystem in Frameworks */,
 				D92E1B172EE93F1F00B20317 /* Stores in Frameworks */,
+				D92E1B1E2EE95FC800B20317 /* Networking in Frameworks */,
 				D92E1B122EE93A0700B20317 /* Home in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -122,6 +124,7 @@
 				D90513622EE8657E00AD088B /* Models */,
 				D92E1B112EE93A0700B20317 /* Home */,
 				D92E1B162EE93F1F00B20317 /* Stores */,
+				D92E1B1D2EE95FC800B20317 /* Networking */,
 			);
 			productName = Dreevy;
 			productReference = D90512A82EE8493500AD088B /* CarKit.app */;
@@ -457,6 +460,10 @@
 		D92E1B162EE93F1F00B20317 /* Stores */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Stores;
+		};
+		D92E1B1D2EE95FC800B20317 /* Networking */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Networking;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

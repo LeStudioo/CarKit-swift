@@ -1,5 +1,5 @@
 {
-  "originHash" : "9b27a7e154731db4d3d42d13f4346f9395c6cf17a08d8fdd8d22a8e9e7412c37",
+  "originHash" : "fcbfb22f968e1a29d7c583843a3e23f036c8b743ee5a15a7934a7fc9d1347342",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -8,6 +8,24 @@
       "state" : {
         "revision" : "fd16d76fd8b9a976d88bfb6cacc05ca8d19c91b6",
         "version" : "1.1.0"
+      }
+    },
+    {
+      "identity" : "keychainkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/theosementa/KeychainKit",
+      "state" : {
+        "branch" : "1.0.4",
+        "revision" : "ea3994dfc56e8585339412cf59c51c302dc5f46c"
+      }
+    },
+    {
+      "identity" : "networkkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/theosementa/NetworkKit",
+      "state" : {
+        "branch" : "1.0.1",
+        "revision" : "7f7e8523b564b7bcc5d7b16fcb56fca692b92b6a"
       }
     },
     {

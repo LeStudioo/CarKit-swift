@@ -22,7 +22,7 @@ let package = Package(
             name: "Stores",
             dependencies: [
                 .product(name: "Models", package: "Models"),
-                .product(name: "Dependencies", package: "swift-dependencies"),
+                .product(name: "Dependencies", package: "swift-dependencies")
             ]
         )
     ]
