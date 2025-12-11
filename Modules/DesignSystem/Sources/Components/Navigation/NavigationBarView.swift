@@ -17,6 +17,7 @@ public struct NavigationBarView: View {
     private let backButtonText: String?
     private let style: NavigationBarStyle
     private let userButtonAction: (() -> Void)?
+    private let onCancel: (() -> Void)?
 
     // MARK: Environment
     @Environment(\.dismiss) private var dismiss
@@ -28,7 +29,8 @@ public struct NavigationBarView: View {
         hasBackButton: Bool = true,
         backButtonText: String? = nil,
         style: NavigationBarStyle,
-        userButtonAction: (() -> Void)? = nil
+        userButtonAction: (() -> Void)? = nil,
+        onCancel: (() -> Void)? = nil
     ) {
         self.title = title
         self.subtitle = subtitle
@@ -36,6 +38,7 @@ public struct NavigationBarView: View {
         self.backButtonText = backButtonText
         self.style = style
         self.userButtonAction = userButtonAction
+        self.onCancel = onCancel
     }
 
     // MARK: - View
@@ -51,6 +54,8 @@ public struct NavigationBarView: View {
                         Text(title)
                             .customFont(.Display.ExtraSmall.medium, color: .Gray.veryDark)
                             .fullWidth(.leading)
+                            .padding(.vertical, style == .navigation ? .tiny : 0)
+                            .padding(.horizontal, style == .navigation ? .small : 0)
                     }
                 }
 
@@ -89,12 +94,14 @@ extension NavigationBarView {
         self.backButtonText = nil
         self.style = .home
         self.userButtonAction = userButtonAction
+        self.onCancel = nil
     }
     
     /// navigation
     public init(
         title: String,
-        backButtonText: String
+        backButtonText: String,
+        onCancel: (() -> Void)? = nil
     ) {
         self.title = title
         self.subtitle = nil
@@ -102,12 +109,14 @@ extension NavigationBarView {
         self.backButtonText = backButtonText
         self.style = .navigation
         self.userButtonAction = nil
+        self.onCancel = onCancel
     }
     
     /// small navigation
     public init(
         title: String,
-        subtitle: String
+        subtitle: String,
+        onCancel: (() -> Void)? = nil
     ) {
         self.title = title
         self.subtitle = subtitle
@@ -115,6 +124,7 @@ extension NavigationBarView {
         self.backButtonText = nil
         self.style = .smallNavigation
         self.userButtonAction = nil
+        self.onCancel = onCancel
     }
     
 }
@@ -149,7 +159,11 @@ extension NavigationBarView {
 
     var dismissButtonView: some View {
         Button {
-            dismiss()
+            if let onCancel {
+                onCancel()
+            } else {
+                dismiss()
+            }
         } label: {
             HStack(spacing: .small) {
                 if hasBackButton {
