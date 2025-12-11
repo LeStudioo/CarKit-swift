@@ -16,7 +16,7 @@ public class VehicleEntity {
     
     public var brand: String
     public var model: String
-    public var customName: String?
+    public var customName: String
     
     public var imageLocal: Data?
     
@@ -30,7 +30,7 @@ public class VehicleEntity {
         remoteId: String? = nil,
         brand: String,
         model: String,
-        customName: String? = nil,
+        customName: String,
         imageLocal: Data? = nil,
         year: Int? = nil,
         motorization: MotorizationType,

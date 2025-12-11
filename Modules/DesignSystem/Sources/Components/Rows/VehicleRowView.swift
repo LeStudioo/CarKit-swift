@@ -12,7 +12,7 @@ public struct VehicleRowView: View {
     // MARK: Dependencies
     private let uiImage: UIImage?
     private let title: String
-    private let subtitle: String?
+    private let subtitle: String
 
     // MARK: Computed variables
     var hasImage: Bool { return uiImage != nil }
@@ -21,7 +21,7 @@ public struct VehicleRowView: View {
     public init(
         uiImage: UIImage? = nil,
         title: String,
-        subtitle: String? = nil
+        subtitle: String
     ) {
         self.uiImage = uiImage
         self.title = title
@@ -78,7 +78,7 @@ extension VehicleRowView {
                     color: hasImage ? Color.Base.white : Color.Base.black
                 )
 
-            Text(subtitle ?? "")
+            Text(subtitle)
                 .customFont(
                     .Text.Small.regular,
                     color: hasImage ? Color.Gray.light : Color.Base.black

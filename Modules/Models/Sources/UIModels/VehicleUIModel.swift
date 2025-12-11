@@ -11,7 +11,7 @@ public struct VehicleUIModel: Sendable, Identifiable {
     public let id: String
     public var brand: String
     public var model: String
-    public var customName: String?
+    public var customName: String
     public var imageUrl: String?
     public var imageData: Data?
     public var year: Int?
@@ -22,7 +22,7 @@ public struct VehicleUIModel: Sendable, Identifiable {
         id: String,
         brand: String,
         model: String,
-        customName: String? = nil,
+        customName: String,
         imageUrl: String? = nil,
         imageData: Data? = nil,
         year: Int? = nil,

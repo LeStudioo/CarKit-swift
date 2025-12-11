@@ -11,7 +11,7 @@ public struct VehicleAPIModel: APIModel {
     public let id: String
     public var brand: String
     public var model: String
-    public var customName: String?
+    public var customName: String
 
     public var imageUrl: String?
 
@@ -22,7 +22,7 @@ public struct VehicleAPIModel: APIModel {
         id: String,
         brand: String,
         model: String,
-        customName: String? = nil,
+        customName: String,
         imageUrl: String? = nil,
         year: Int? = nil,
         motorization: String

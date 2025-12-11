@@ -39,7 +39,7 @@ public extension VehicleBody {
     static func create(
         brand: String,
         model: String,
-        customName: String? = nil,
+        customName: String,
         imageData: Data? = nil,
         year: Int? = nil,
         motorization: String
@@ -81,7 +81,7 @@ public extension VehicleBody {
         return .init(
             brand: brand ?? "",
             model: model ?? "",
-            customName: customName,
+            customName: customName ?? "",
             imageLocal: imageData,
             year: year,
             motorization: MotorizationType(rawValue: motorization ?? "") ?? .none
