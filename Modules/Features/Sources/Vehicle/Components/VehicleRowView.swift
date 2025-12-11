@@ -1,31 +1,32 @@
 //
-//  SwiftUIView.swift
-//  DesignSystem
+//  VehicleRowView.swift
+//  Features
 //
-//  Created by Theo Sementa on 09/12/2025.
+//  Created by Theo Sementa on 11/12/2025.
 //
 
 import SwiftUI
+import Models
+import Stores
+import DesignSystem
 
 public struct VehicleRowView: View {
 
     // MARK: Dependencies
-    private let uiImage: UIImage?
-    private let title: String
-    private let subtitle: String
+    private let vehicle: VehicleUIModel
+    @Dependency(\.vehicleStore) private var vehicleStore
 
     // MARK: Computed variables
-    var hasImage: Bool { return uiImage != nil }
+    var uiImage: UIImage? {
+        return UIImage(data: vehicle.imageData ?? Data())
+    }
+    var hasImage: Bool {
+        return uiImage != nil
+    }
 
     // MARK: Init
-    public init(
-        uiImage: UIImage? = nil,
-        title: String,
-        subtitle: String
-    ) {
-        self.uiImage = uiImage
-        self.title = title
-        self.subtitle = subtitle
+    public init(vehicle: VehicleUIModel) {
+        self.vehicle = vehicle
     }
 
     // MARK: - View
@@ -45,6 +46,13 @@ public struct VehicleRowView: View {
             radius: .small,
             strokeColor: .Gray.light
         )
+        .contentShape(.contextMenuPreview, .rect(cornerRadius: .small))
+        .contextMenu {
+            contextMenuView
+        } preview: {
+            self
+                .frame(width: UIScreen.main.bounds.width - 32)
+        }
     }
 
 }
@@ -52,7 +60,7 @@ public struct VehicleRowView: View {
 // MARK: - Subviews
 extension VehicleRowView {
 
-    func imageView(for uiImage: UIImage) -> some View {
+    private func imageView(for uiImage: UIImage) -> some View {
         Image(uiImage: uiImage)
             .resizable()
             .scaledToFill()
@@ -70,19 +78,28 @@ extension VehicleRowView {
             .clipShape(.rect(cornerRadius: .small, style: .continuous))
     }
 
-    var textView: some View {
+    private var textView: some View {
         VStack(alignment: .leading, spacing: .zero) {
-            Text(title)
+            Text(vehicle.fullName)
                 .customFont(
                     .Text.Medium.bold,
                     color: hasImage ? Color.Base.white : Color.Base.black
                 )
 
-            Text(subtitle)
+            Text(vehicle.customName)
                 .customFont(
                     .Text.Small.regular,
                     color: hasImage ? Color.Gray.light : Color.Base.black
                 )
+        }
+    }
+    
+    @ViewBuilder
+    private var contextMenuView: some View {
+        Button(role: .destructive) {
+            vehicleStore.delete(for: vehicle.id)
+        } label: {
+            Label("Delete", systemImage: "trash")
         }
     }
 
@@ -91,16 +108,13 @@ extension VehicleRowView {
 // MARK: - Preview
 #Preview {
     VStack(spacing: .large) {
-        VehicleRowView(
-            uiImage: UIImage(resource: .previewCar),
-            title: "Audi RS6",
-            subtitle: "Voiture de Théo"
-        )
-
-        VehicleRowView(
-            title: "Afla Romeo 147",
-            subtitle: "Voiture de Papa"
-        )
+        var mockWithImage = VehicleUIModel.mock
+        VehicleRowView(vehicle: mockWithImage)
+//            .onAppear {
+//                mockWithImage.imageData = UIImage(resource: .previewCar).pngData()
+//            }
+        
+        VehicleRowView(vehicle: .mock)
     }
     .padding(.large)
 }

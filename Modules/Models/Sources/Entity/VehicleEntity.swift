@@ -9,9 +9,9 @@ import Foundation
 import SwiftData
 
 @Model
-public class VehicleEntity {
+public class VehicleEntity: EntityProtocol {
     
-    public var localId: UUID
+    @Attribute(.unique) public var localId: UUID = UUID()
     public var remoteId: String?
     
     public var brand: String
@@ -36,7 +36,6 @@ public class VehicleEntity {
         motorization: MotorizationType,
         updatedAt: Date? = nil
     ) {
-        self.localId = UUID()
         self.remoteId = remoteId
         self.brand = brand
         self.model = model
@@ -48,6 +47,13 @@ public class VehicleEntity {
         self.updatedAt = updatedAt
     }
 
+}
+
+// MARK: - Identifiable
+extension VehicleEntity: Identifiable {
+    
+    public var id: UUID { return localId }
+    
 }
 
 // MARK: - Mappers

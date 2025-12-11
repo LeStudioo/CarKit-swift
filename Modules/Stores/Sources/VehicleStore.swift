@@ -52,6 +52,24 @@ public extension VehicleStore {
         }
     }
     
+    func delete(for id: String) {
+        Task {
+            do {
+                vehicles.removeAll(where: { $0.id == id })
+                
+                if let uuid = UUID(uuidString: id) {
+                    try? vehicleRepo.delete(by: uuid)
+                }
+                
+                if NetworkMonitor.shared.isConnected {
+                    try await VehicleService.delete(for: id)
+                }
+            } catch {
+                
+            }
+        }
+    }
+    
 }
 
 // MARK: - Dependencies

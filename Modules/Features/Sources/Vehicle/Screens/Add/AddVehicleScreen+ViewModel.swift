@@ -37,8 +37,8 @@ extension AddVehicleScreen {
 // MARK: - Computed variables
 extension AddVehicleScreen.ViewModel {
     
-    var actionButtonTitle: String { // TODO: TBL
-        return isStepTwo ? "Valider" : "Next"
+    var actionButtonTitle: String {
+        return isStepTwo ? "add_vehicle_button_validate".localized : "add_vehicle_button_next".localized
     }
     
     var isFirstStepValid: Bool {
@@ -91,8 +91,13 @@ extension AddVehicleScreen.ViewModel {
             }
         }
         
-        await vehicleStore.create(body: body)
-        dismiss()
+        do {
+            await vehicleStore.create(body: body)
+            // TODO: Send success banner
+            dismiss()
+        } catch {
+            
+        }
     }
     
 }

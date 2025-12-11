@@ -40,3 +40,18 @@ public struct VehicleUIModel: Sendable, Identifiable {
         self.isLocalModel = isLocalModel
     }
 }
+
+// MARK: - Mocks
+public extension VehicleUIModel {
+    
+    static let mock = VehicleUIModel(
+        id: UUID().uuidString,
+        brand: "Ferrari",
+        model: "812 Superfast",
+        customName: "Voiture de Théo",
+        year: 2017,
+        motorization: .thermal,
+        isLocalModel: true
+    )
+    
+}

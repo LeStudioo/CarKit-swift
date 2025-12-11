@@ -8,6 +8,7 @@
 import SwiftUI
 import Navigation
 import DesignSystem
+import Vehicle
 
 public struct HomeScreen: View {
     
@@ -32,15 +33,11 @@ public struct HomeScreen: View {
             if viewModel.hasVehicles {
                 VStack(spacing: .standard) {
                     ForEach(viewModel.vehicleStore.vehicles) { vehicle in
-                        VehicleRowView(
-                            uiImage: UIImage(data: vehicle.imageData ?? Data()),
-                            title: vehicle.fullName,
-                            subtitle: vehicle.customName
-                        )
+                        VehicleRowView(vehicle: vehicle)
                     }
                     
-                    ActionButtonView( // TODO: TBL
-                        title: "Add vehicle",
+                    ActionButtonView(
+                        title: "home_button_add_vehicle".localized,
                         icon: .iconCar,
                         isFullWidth: true,
                         style: .clear,

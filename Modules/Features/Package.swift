@@ -20,6 +20,8 @@ let package = Package(
         .target(
             name: "Home",
             dependencies: [
+                "Vehicle",
+                
                 .product(name: "DesignSystem", package: "DesignSystem"),
                 .product(name: "Models", package: "Models"),
                 .product(name: "Stores", package: "Stores"),

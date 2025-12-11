@@ -27,14 +27,14 @@ public struct AddVehicleScreen: View {
     // MARK: - View
     public var body: some View {
         VStack(spacing: 0) {
-            NavigationBarView( // TODO: TBL
-                title: "Add vehicle",
-                backButtonText: "My vehicles",
+            NavigationBarView(
+                title: "add_vehicle_title".localized,
+                backButtonText: "add_vehicle_back_button".localized,
                 onCancel: { viewModel.onCancel(dismiss: dismiss) }
             )
             
             ScrollView {
-                VStack(spacing: .standard) { // TODO: TBL
+                VStack(spacing: .standard) {
                     if viewModel.isStepTwo == false {
                         stepOneView
                     } else {
@@ -73,14 +73,14 @@ extension AddVehicleScreen {
     @ViewBuilder
     private var stepOneView: some View {
         TypePickerView(
-            title: "Motorisation",
+            title: "add_vehicle_field_motorization_title".localized,
             selectedItem: $viewModel.motorization
         )
         
         TextFieldView(
             text: $viewModel.brand,
             config: .init(
-                title: "word_constructor".localized,
+                title: "add_vehicle_field_brand_title".localized,
                 placeholder: "Audi",
                 regex: .name
             )
@@ -92,7 +92,7 @@ extension AddVehicleScreen {
         TextFieldView(
             text: $viewModel.model,
             config: .init(
-                title: "word_model".localized,
+                title: "add_vehicle_field_model_title".localized,
                 placeholder: "A3",
                 regex: .nameWithNumbers
             )
@@ -104,8 +104,8 @@ extension AddVehicleScreen {
         TextFieldView(
             text: $viewModel.customName,
             config: .init(
-                title: "word_name".localized,
-                placeholder: "creation_name_placeholder".localized,
+                title: "add_vehicle_field_custom_name_title".localized,
+                placeholder: "add_vehicle_field_custom_name_placeholder".localized,
                 regex: .nameWithSpecialLettersAndNumbers
             )
         )
@@ -121,7 +121,7 @@ extension AddVehicleScreen {
         TextFieldView(
             text: $viewModel.mileageAtStart,
             config: .init(
-                title: "word_mileage_optional".localized,
+                title: "add_vehicle_field_mileage_title".localized,
                 placeholder: "10 000",
                 type: .numberPad,
                 unit: "KM"
@@ -134,7 +134,7 @@ extension AddVehicleScreen {
         TextFieldView(
             text: $viewModel.year,
             config: .init(
-                title: "word_year_optional".localized,
+                title: "add_vehicle_field_manufacturing_year_title".localized,
                 placeholder: "2025",
                 type: .numberPad
             )
