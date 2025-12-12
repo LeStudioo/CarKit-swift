@@ -24,7 +24,7 @@ struct RootScreen: View {
             initialContent: { HomeScreen() }
         )
         .environment(toastBannerService)
-        .toastBanner(item: $toastBannerService.banner) { banner in
+        .toastBanner(item: $toastBannerService.toastBanner) { banner in
             BannerView(banner: banner)
         }
     }

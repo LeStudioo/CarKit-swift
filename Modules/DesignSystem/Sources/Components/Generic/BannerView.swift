@@ -12,10 +12,10 @@ import ToastBannerKit
 public struct BannerView: View {
 
     // MARK: Dependencies
-    let banner: BannerUIModel
+    let banner: ToastBannerUIModel
 
     // MARK: Init
-    public init(banner: BannerUIModel) {
+    public init(banner: ToastBannerUIModel) {
         self.banner = banner
     }
     
