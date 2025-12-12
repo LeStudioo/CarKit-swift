@@ -21,20 +21,18 @@ public final class VehicleStore: @unchecked Sendable {
 
 public extension VehicleStore {
     
-    func fetchAll() async {
+    func fetchAll() async { // TODO: See how to sync with server
         do {
-//            if NetworkMonitor.shared.isConnected {
-//                let vehiclesFromAPI = try await VehicleService.fetchAll()
-//                let vehiclesUI = vehiclesFromAPI.map { $0.toUIModel() }
-//                self.vehicles = vehiclesUI
-//            } else {
-                let vehiclesFromLocal = try vehicleRepo.fetchAll()
-                let vehiclesUI = vehiclesFromLocal.map { $0.toUIModel() }
-                self.vehicles = vehiclesUI
-//            }
+            let vehiclesFromLocal = try vehicleRepo.fetchAll()
+            let vehiclesUI = vehiclesFromLocal.map { $0.toUIModel() }
+            self.vehicles = vehiclesUI
         } catch {
             
         }
+    }
+    
+    func fetchOne(by vehicleId: String) -> VehicleUIModel? {
+        return vehicles.first(where: { $0.id == vehicleId })
     }
     
     func create(body: VehicleBody) async {

@@ -25,7 +25,7 @@ public struct TypePickerView<T: TypePickerItem>: View {
     
     // MARK: -
     public var body: some View {
-        VStack(alignment: .leading, spacing: 6) {
+        VStack(alignment: .leading, spacing: .small) {
             Text(title)
                 .customFont(.Text.Small.medium, color: .Gray.dark)
             

@@ -33,7 +33,12 @@ public struct HomeScreen: View {
             if viewModel.hasVehicles {
                 VStack(spacing: .standard) {
                     ForEach(viewModel.vehicleStore.vehicles) { vehicle in
-                        VehicleRowView(vehicle: vehicle)
+                        NavigationButtonView(
+                            route: .push,
+                            destination: .vehicle(.detail(vehicleId: vehicle.id))
+                        ) {
+                            VehicleRowView(vehicle: vehicle)
+                        }
                     }
                     
                     ActionButtonView(

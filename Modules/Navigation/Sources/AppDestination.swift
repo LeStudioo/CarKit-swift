@@ -9,5 +9,6 @@ import Foundation
 import NavigationKit
 
 public enum AppDestination: AppDestinationProtocol {
-  case vehicle(VehicleDestination)
+    case vehicle(VehicleDestination)
+    case spending(SpendingDestination)
 }

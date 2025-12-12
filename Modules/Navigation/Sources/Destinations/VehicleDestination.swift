@@ -6,7 +6,9 @@
 //
 
 import Foundation
+import NavigationKit
 
-public enum VehicleDestination {
+public enum VehicleDestination: DestinationItem {
     case create
+    case detail(vehicleId: String)
 }

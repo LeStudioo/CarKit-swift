@@ -9,6 +9,7 @@ import Foundation
 import Navigation
 import SwiftUI
 import Vehicle
+import Spending
 
 extension AppDestination {
     
@@ -17,6 +18,8 @@ extension AppDestination {
         switch destination {
         case .vehicle(let vehicleDestination):
             vehicleView(vehicleDestination)
+        case .spending(let spendingDestination):
+            spendingView(spendingDestination)
         }
     }
     
@@ -29,6 +32,16 @@ extension AppDestination {
         switch destination {
         case .create:
             AddVehicleScreen()
+        case .detail(let vehicleId):
+            VehicleDetailsScreen(vehicleId: vehicleId)
+        }
+    }
+    
+    @ViewBuilder
+    static private func spendingView(_ destination: SpendingDestination) -> some View {
+        switch destination {
+        case .create(let vehicleId):
+            AddSpendingScreen(vehicleId: vehicleId)
         }
     }
     
