@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum BannerStyle {
+public enum BannerStyle: String {
     case error
     case success
 }

@@ -14,7 +14,9 @@ let package = Package(
         .package(name: "DesignSystem", path: "../DesignSystem"),
         .package(name: "Models", path: "../Models"),
         .package(name: "Stores", path: "../Stores"),
-        .package(name: "Navigation", path: "../Navigation")
+        .package(name: "Navigation", path: "../Navigation"),
+        
+        .package(url: "https://github.com/theosementa/ToastBannerKit.git", exact: "1.0.0")
     ],
     targets: [
         .target(
@@ -34,7 +36,8 @@ let package = Package(
             dependencies: [
                 .product(name: "DesignSystem", package: "DesignSystem"),
                 .product(name: "Models", package: "Models"),
-                .product(name: "Stores", package: "Stores")
+                .product(name: "Stores", package: "Stores"),
+                .product(name: "ToastBannerKit", package: "ToastBannerKit")
             ]
         )
     ]

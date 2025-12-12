@@ -9,6 +9,7 @@ import Foundation
 import Models
 import SwiftUI
 import Stores
+import ToastBannerKit
 
 // MARK: - Stored variables
 extension AddVehicleScreen {
@@ -91,13 +92,9 @@ extension AddVehicleScreen.ViewModel {
             }
         }
         
-        do {
-            await vehicleStore.create(body: body)
-            // TODO: Send success banner
-            dismiss()
-        } catch {
-            
-        }
+        await vehicleStore.create(body: body)
+        ToastBannerService.shared.send(.vehicleCreated)
+        dismiss()
     }
     
 }

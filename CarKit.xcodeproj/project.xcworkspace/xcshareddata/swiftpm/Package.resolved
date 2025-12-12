@@ -1,5 +1,5 @@
 {
-  "originHash" : "59a175a7932de089fb8236a54876a66d113fedbafa4a8a864d5e661ed2442956",
+  "originHash" : "80682484676a3ee1e61130c40096fcff877bc251bf3539590bf45f47a055a359",
   "pins" : [
     {
       "identity" : "combine-schedulers",
@@ -71,6 +71,15 @@
       "state" : {
         "revision" : "f99ae8aa18f0cf0d53481901f88a0991dc3bd4a2",
         "version" : "601.0.1"
+      }
+    },
+    {
+      "identity" : "toastbannerkit",
+      "kind" : "remoteSourceControl",
+      "location" : "https://github.com/theosementa/ToastBannerKit.git",
+      "state" : {
+        "revision" : "0d15a2f46d836d2682c18a326b58ff50b84c652b",
+        "version" : "1.0.0"
       }
     },
     {

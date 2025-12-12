@@ -7,29 +7,27 @@
 
 import SwiftUI
 import Models
+import ToastBannerKit
 
 public struct BannerView: View {
 
     // MARK: Dependencies
-    var title: String
-    var style: BannerStyle
-    var onCancelTapped: (() -> Void)
+    let banner: BannerUIModel
 
     // MARK: Init
-    public init(
-        title: String,
-        style: BannerStyle,
-        onCancelTapped: @escaping () -> Void
-    ) {
-        self.title = title
-        self.style = style
-        self.onCancelTapped = onCancelTapped
+    public init(banner: BannerUIModel) {
+        self.banner = banner
+    }
+    
+    // MARK: Computed variables
+    var style: BannerStyle {
+        return BannerStyle(rawValue: banner.style.rawValue) ?? .error
     }
 
     // MARK: -
     public var body: some View {
         HStack(spacing: .small) {
-            Text(title)
+            Text(banner.title)
                 .customFont(.Text.Small.bold, color: style.foregroundColor)
                 .multilineTextAlignment(.leading)
                 .lineLimit(2)
@@ -43,17 +41,14 @@ public struct BannerView: View {
             radius: .small,
             strokeColor: .Gray.light
         )
-        .onTapGesture {
-            onCancelTapped()
-        }
-        .gesture(
-            DragGesture()
-                .onChanged { gesture in
-                    if gesture.translation.height < 0 {
-                        onCancelTapped()
-                    }
-                }
-        )
+//        .gesture(
+//            DragGesture()
+//                .onChanged { gesture in
+//                    if gesture.translation.height < 0 {
+//                        onCancelTapped()
+//                    }
+//                }
+//        )
         .padding(.horizontal, .large)
     }
 }
@@ -61,16 +56,6 @@ public struct BannerView: View {
 // MARK: - Preview
 #Preview {
     VStack(spacing: .large) {
-        BannerView(
-            title: "This is a banner",
-            style: .error,
-            onCancelTapped: {}
-        )
-
-        BannerView(
-            title: "This is a banner",
-            style: .success,
-            onCancelTapped: {}
-        )
+        BannerView(banner: .vehicleCreated)
     }
 }

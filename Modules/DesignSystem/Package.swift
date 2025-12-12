@@ -25,14 +25,16 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Models", path: "../Models"),
-        .package(name: "Utilities", path: "../Utilities")
+        .package(name: "Utilities", path: "../Utilities"),
+        .package(url: "https://github.com/theosementa/ToastBannerKit.git", exact: "1.0.0")
     ],
     targets: [
         .target(
             name: "DesignSystem",
             dependencies: [
                 .product(name: "Models", package: "Models"),
-                .product(name: "Utilities", package: "Utilities")
+                .product(name: "Utilities", package: "Utilities"),
+                .product(name: "ToastBannerKit", package: "ToastBannerKit")
             ],
             resources: resources
         )
