@@ -7,7 +7,7 @@
 
 import Foundation
 
-public enum SpendingType: String, APIModel {
+public enum SpendingType: String, APIModel, CaseIterable {
     case vehiclePart
     case service
     case fuel
@@ -16,4 +16,9 @@ public enum SpendingType: String, APIModel {
     case accessories
     case sparePart
     case other
+    case none
+    
+    static public var allCases: [SpendingType] {
+        return [.vehiclePart, .service, .fuel, .insurance, .subscription, .accessories, .sparePart, .other]
+    }
 }

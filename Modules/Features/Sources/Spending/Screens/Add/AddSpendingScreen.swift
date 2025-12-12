@@ -8,11 +8,15 @@
 import SwiftUI
 import DesignSystem
 import Utilities
+import Models
 
 public struct AddSpendingScreen: View {
     
     // MARK: States
     @State private var viewModel: AddSpendingScreen.ViewModel
+    
+    // MARK: Environments
+    @Environment(\.dismiss) private var dismiss
     
     // MARK: Init
     public init(vehicleId: String) {
@@ -25,7 +29,7 @@ public struct AddSpendingScreen: View {
             NavigationBarView( // TODO: TBL
                 title: "Add Spending",
                 subtitle: viewModel.vehicle?.customName ?? "",
-                onCancel: {  } // viewModel.onCancel(dismiss: dismiss)
+                onCancel: { viewModel.onCancel(dismiss: dismiss) }
             )
             
             ScrollView {
@@ -40,28 +44,27 @@ public struct AddSpendingScreen: View {
                     if viewModel.isStepTwo == false {
                         stepOneView
                     } else {
-//                        stepTwoView
+                        stepTwoView
                     }
                 }
                 .padding(.large)
             }
             .scrollIndicators(.hidden)
             .scrollDismissesKeyboard(.interactively)
-            .animation(.smooth, value: viewModel.isStepTwo)
             
-//            ActionButtonView(
-//                title: viewModel.actionButtonTitle,
-//                isFullWidth: true
-//            ) {
-//                if viewModel.isStepTwo == false {
-//                    if viewModel.isFirstStepValid { viewModel.isStepTwo = true }
-//                } else {
+            ActionButtonView(
+                title: viewModel.actionButtonTitle,
+                isFullWidth: true
+            ) {
+                if viewModel.isStepTwo == false {
+                    viewModel.isStepTwo = true
+                } else {
 //                    await viewModel.createVehicle(dismiss: dismiss)
-//                }
-//            }
-//            .padding(.large)
-            
+                }
+            }
+            .padding(.large)
         }
+        .animation(.smooth, value: viewModel.isStepTwo)
         .fullSize(.top)
         .background(Color.Gray.veryLight)
         .ignoresSafeArea(.keyboard, edges: .bottom)
@@ -79,13 +82,47 @@ extension AddSpendingScreen {
             text: $viewModel.amount,
             config: .init(
                 title: "Amount".localized,
-                placeholder: "\(Int.random(in: 50...300))",
+                placeholder: viewModel.randomAmountPlaceholder,
                 type: .decimalPad,
                 unit: UserCurrency.symbol
             )
         )
         
         DatePickerView(selectedDate: $viewModel.date)
+    }
+    
+    @ViewBuilder
+    private var stepTwoView: some View {
+        TagsSectionView( // TODO: TBL
+            title: "Type",
+            items: viewModel.spendingTypeTags,
+            selectedItem: $viewModel.selectedSpendingTag
+        )
+        
+        switch viewModel.selectedSpendingType {
+        case .vehiclePart:
+            EmptyView()
+        case .service:
+            TagsSectionView( // TODO: TBL
+                title: "Service",
+                items: viewModel.serviceTypeTags,
+                selectedItem: $viewModel.selectedServiceTag
+            )
+        case .fuel:
+            EmptyView()
+        case .insurance:
+            EmptyView()
+        case .subscription:
+            EmptyView()
+        case .accessories:
+            EmptyView()
+        case .sparePart:
+            EmptyView()
+        case .other:
+            EmptyView()
+        case .none:
+            EmptyView()
+        }
     }
     
 }

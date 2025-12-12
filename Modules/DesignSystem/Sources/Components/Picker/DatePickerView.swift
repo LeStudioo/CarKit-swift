@@ -20,13 +20,15 @@ public struct DatePickerView: View {
     // MARK: - View
     public var body: some View {
         VStack(alignment: .leading, spacing: .small) {
-            Text("word_image_optional".localized)
+            Text("Date".localized) // TODO: TBL
                 .customFont(.Text.Small.medium, color: .Gray.dark)
             
             HStack(spacing: .medium) {
                 Text(selectedDate.formatted(.dateTime.day().month().year()))
                     .customFont(.Text.Medium.medium, color: .Gray.veryDark)
                     .fullWidth(.leading)
+                    .contentTransition(.numericText())
+                    .animation(.smooth, value: selectedDate)
                 
             }
             .padding(.horizontal, .medium)
@@ -37,13 +39,16 @@ public struct DatePickerView: View {
                 strokeColor: .Gray.light
             )
             .overlay {
-                HStack {
-                    DatePicker(selection: $selectedDate) { }
+                HStack(spacing: .zero) {
+                    DatePicker(selection: $selectedDate, displayedComponents: .date) { }
                         .labelsHidden()
-                    DatePicker(selection: $selectedDate) { }
+                        .colorMultiply(.clear)
+                    DatePicker(selection: $selectedDate, displayedComponents: .date) { }
                         .labelsHidden()
-                    DatePicker(selection: $selectedDate) { }
+                        .colorMultiply(.clear)
+                    DatePicker(selection: $selectedDate, displayedComponents: .date) { }
                         .labelsHidden()
+                        .colorMultiply(.clear)
                 }
             }
         }

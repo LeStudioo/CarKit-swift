@@ -52,6 +52,7 @@ public struct ActionButtonView: View {
                     HStack(spacing: .small) {
                         Text(title)
                             .customFont(.Text.Medium.bold, color: style.foregroundColor)
+                            .contentTransition(.numericText())
                         
                         if let icon {
                             IconView(asset: icon, size: .medium, color: style.foregroundColor)
