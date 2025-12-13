@@ -11,10 +11,10 @@ import Models
 
 public enum VehicleAPIRequester: APIRequestBuilder {
     case fetchAll
-    case fetchOne(carId: String)
+    case fetchOne(vehicleId: String)
     case create(body: VehicleBody)
-    case update(carId: String, body: VehicleBody)
-    case delete(carId: String)
+    case update(vehicleId: String, body: VehicleBody)
+    case delete(vehicleId: String)
 }
 
 public extension VehicleAPIRequester {
@@ -23,14 +23,14 @@ public extension VehicleAPIRequester {
         switch self {
         case .fetchAll:
             return NetworkPath.Vehicle.path()
-        case .fetchOne(let carId):
-            return NetworkPath.Vehicle.path(for: carId)
+        case .fetchOne(let vehicleId):
+            return NetworkPath.Vehicle.path(for: vehicleId)
         case .create:
             return NetworkPath.Vehicle.path()
-        case .update(let carId, _):
-            return NetworkPath.Vehicle.path(for: carId)
-        case .delete(let carId):
-            return NetworkPath.Vehicle.path(for: carId)
+        case .update(let vehicleId, _):
+            return NetworkPath.Vehicle.path(for: vehicleId)
+        case .delete(let vehicleId):
+            return NetworkPath.Vehicle.path(for: vehicleId)
         }
     }
     

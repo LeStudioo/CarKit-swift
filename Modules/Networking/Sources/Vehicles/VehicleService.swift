@@ -12,40 +12,36 @@ import NetworkKit
 public struct VehicleService: VehicleServiceProtocol {
     
     public static func fetchAll() async throws -> [VehicleAPIModel] {
-        let response = try await NetworkService.sendRequest(
+        return try await NetworkService.sendRequest(
             apiBuilder: VehicleAPIRequester.fetchAll,
             responseModel: [VehicleAPIModel].self
         )
-        return response
     }
     
-    public static func fetchOne(by carId: String) async throws -> VehicleAPIModel {
-        let response = try await NetworkService.sendRequest(
-            apiBuilder: VehicleAPIRequester.fetchOne(carId: carId),
+    public static func fetchOne(by vehicleId: String) async throws -> VehicleAPIModel {
+        return try await NetworkService.sendRequest(
+            apiBuilder: VehicleAPIRequester.fetchOne(vehicleId: vehicleId),
             responseModel: VehicleAPIModel.self
         )
-        return response
     }
     
     public static func create(body: VehicleBody) async throws -> VehicleAPIModel {
-        let response = try await NetworkService.sendRequest(
+        return try await NetworkService.sendRequest(
             apiBuilder: VehicleAPIRequester.create(body: body),
             responseModel: VehicleAPIModel.self
         )
-        return response
     }
     
-    public static func update(for carId: String, body: VehicleBody) async throws -> VehicleAPIModel {
-        let response = try await NetworkService.sendRequest(
-            apiBuilder: VehicleAPIRequester.update(carId: carId, body: body),
+    public static func update(for vehicleId: String, body: VehicleBody) async throws -> VehicleAPIModel {
+        return try await NetworkService.sendRequest(
+            apiBuilder: VehicleAPIRequester.update(vehicleId: vehicleId, body: body),
             responseModel: VehicleAPIModel.self
         )
-        return response
     }
     
-    public static func delete(for carId: String) async throws {
+    public static func delete(for vehicleId: String) async throws {
         try await NetworkService.sendRequest(
-            apiBuilder: VehicleAPIRequester.delete(carId: carId)
+            apiBuilder: VehicleAPIRequester.delete(vehicleId: vehicleId)
         )
     }
     

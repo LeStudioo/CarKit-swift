@@ -10,8 +10,8 @@ import Models
 
 public protocol VehicleServiceProtocol {
     static func fetchAll() async throws -> [VehicleAPIModel]
-    static func fetchOne(by carId: String) async throws -> VehicleAPIModel
+    static func fetchOne(by vehicleId: String) async throws -> VehicleAPIModel
     static func create(body: VehicleBody) async throws -> VehicleAPIModel
-    static func update(for carId: String, body: VehicleBody) async throws -> VehicleAPIModel
-    static func delete(for carId: String) async throws
+    static func update(for vehicleId: String, body: VehicleBody) async throws -> VehicleAPIModel
+    static func delete(for vehicleId: String) async throws
 }
