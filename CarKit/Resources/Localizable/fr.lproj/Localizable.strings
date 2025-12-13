@@ -1,4 +1,40 @@
 /*  */
+"add_vehicle_back_button" = "Mes véhicules";
+
+/*  */
+"add_vehicle_button_next" = "Suivant";
+
+/*  */
+"add_vehicle_button_validate" = "Valider";
+
+/*  */
+"add_vehicle_field_brand_title" = "Marque";
+
+/*  */
+"add_vehicle_field_custom_name_placeholder" = "Voiture de Théo";
+
+/*  */
+"add_vehicle_field_custom_name_title" = "Nom personnalisé";
+
+/*  */
+"add_vehicle_field_manufacturing_year_title" = "Année de fabrication (facultatif)";
+
+/*  */
+"add_vehicle_field_mileage_title" = "Kilométrage actuel (facultatif)";
+
+/*  */
+"add_vehicle_field_model_title" = "Modèle";
+
+/*  */
+"add_vehicle_field_motorization_title" = "Motorisation";
+
+/*  */
+"add_vehicle_title" = "Ajouter un véhicule";
+
+/*  */
+"home_button_add_vehicle" = "Ajouter un véhicule";
+
+/*  */
 "home_empty_button" = "Ajouter un véhicule";
 
 /*  */
@@ -9,4 +45,13 @@
 
 /*  */
 "home_my_vehicle_header" = "Mes véhicules";
+
+/*  */
+"motorization_electric" = "Électrique";
+
+/*  */
+"motorization_hybrid" = "Hybride";
+
+/*  */
+"motorization_thermal" = "Thermique";
 

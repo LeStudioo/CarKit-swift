@@ -22,8 +22,6 @@ extension VehicleDetailsScreen {
         @ObservationIgnored
         @Dependency(\.spendingStore) var spendingStore
         
-        public var spendings: [SpendingUIModel] = []
-        
         var imageHeight: CGFloat = 0
         var page: Int = 0
         
@@ -53,10 +51,7 @@ extension VehicleDetailsScreen.ViewModel {
         guard let vehicle else { return }
         
         spendingStore.currentVehicle = try? spendingStore.vehicleRepo.fetchOneById(UUID(uuidString: vehicle.id) ?? UUID())
-        let spendings = await spendingStore.fetchWithPagination(page: page)
-        self.spendings.append(contentsOf: spendings)
-        
-        print("🔥 SPENDINGS : \(spendings)")
+        await spendingStore.fetchWithPagination(page: page)
         
         page += 1
     }

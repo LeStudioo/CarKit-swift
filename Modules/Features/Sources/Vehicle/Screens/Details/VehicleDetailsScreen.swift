@@ -43,7 +43,7 @@ public struct VehicleDetailsScreen: View {
                                 Text("Add spending")
                             }
                             
-                            ForEach(viewModel.spendings) { spending in
+                            ForEach(viewModel.spendingStore.spendings) { spending in
                                 Text("\(spending.amount)")
                             }
                             

@@ -1,4 +1,40 @@
 /*  */
+"add_vehicle_back_button" = "My vehicles";
+
+/*  */
+"add_vehicle_button_next" = "Next";
+
+/*  */
+"add_vehicle_button_validate" = "Validate";
+
+/*  */
+"add_vehicle_field_brand_title" = "Brand";
+
+/*  */
+"add_vehicle_field_custom_name_placeholder" = "Theo's car";
+
+/*  */
+"add_vehicle_field_custom_name_title" = "Custom name";
+
+/*  */
+"add_vehicle_field_manufacturing_year_title" = "Manufacturing year (optional)";
+
+/*  */
+"add_vehicle_field_mileage_title" = "Current mileage (optional)";
+
+/*  */
+"add_vehicle_field_model_title" = "Model";
+
+/*  */
+"add_vehicle_field_motorization_title" = "Motorization";
+
+/*  */
+"add_vehicle_title" = "Add vehicle";
+
+/*  */
+"home_button_add_vehicle" = "Add vehicle";
+
+/*  */
 "home_empty_button" = "Add vehicle";
 
 /*  */
@@ -9,4 +45,13 @@
 
 /*  */
 "home_my_vehicle_header" = "My vehicles";
+
+/*  */
+"motorization_electric" = "Electric";
+
+/*  */
+"motorization_hybrid" = "Hybrid";
+
+/*  */
+"motorization_thermal" = "Thermal";
 

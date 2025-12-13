@@ -17,6 +17,8 @@ public final class SpendingStore: @unchecked Sendable {
     
     public var currentVehicle: VehicleEntity?
     
+    public var spendings: [SpendingUIModel] = []
+    
     public let vehicleRepo: VehicleRepository = .init()
     private let spendingRepo: SpendingRepository = .init()
     
@@ -24,14 +26,14 @@ public final class SpendingStore: @unchecked Sendable {
 
 public extension SpendingStore {
     
-    func fetchWithPagination(page: Int) async -> [SpendingUIModel] {
+    func fetchWithPagination(page: Int) async {
         do {
             guard let currentVehicle else { throw NSError(domain: "CarKit", code: 404) } // TODO: Send real error
             let spendings = try spendingRepo.fetchWithPagination(vehicleId: currentVehicle.localId, page: page)
             let spendingsUIModel = spendings.map { $0.toUIModel() }
-            return spendingsUIModel
+            self.spendings.append(contentsOf: spendingsUIModel)
         } catch {
-            return []
+            
         }
     }
     

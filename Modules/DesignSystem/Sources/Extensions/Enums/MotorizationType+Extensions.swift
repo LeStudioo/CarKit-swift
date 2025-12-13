@@ -13,13 +13,13 @@ extension MotorizationType: @retroactive TypePickerItem {
     public var name: String {
         switch self {
         case .none:
-            return "Aucune motorisation"
+            return "Unknown"
         case .thermal:
-            return "Thermique"
+            return "motorization_thermal".localized
         case .hybrid:
-            return "Hybride"
+            return "motorization_hybrid".localized
         case .electric:
-            return "Electrique"
+            return "motorization_electric".localized
         }
     }
     

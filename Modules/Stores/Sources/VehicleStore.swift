@@ -21,7 +21,7 @@ public final class VehicleStore: @unchecked Sendable {
 
 public extension VehicleStore {
     
-    func fetchAll() async { // TODO: See how to sync with server
+    func fetchAll() async {
         do {
             let vehiclesFromLocal = try vehicleRepo.fetchAll()
             let vehiclesUI = vehiclesFromLocal.map { $0.toUIModel() }
