@@ -24,6 +24,9 @@ extension AddSpendingScreen {
         // MARK: Variables
         var amount: String = ""
         var date: Date = Date()
+        var spendingName: String = ""
+        var fuelAmount: String = ""
+        var chargeAmount: String = ""
         
         var selectedSpendingTag: TagUIModel?
         var selectedServiceTag: TagUIModel?

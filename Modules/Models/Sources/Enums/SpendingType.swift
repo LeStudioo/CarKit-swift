@@ -19,6 +19,6 @@ public enum SpendingType: String, APIModel, CaseIterable {
     case none
     
     static public var allCases: [SpendingType] {
-        return [.vehiclePart, .service, .fuel, .insurance, .subscription, .accessories, .sparePart, .other]
+        return [/*.vehiclePart, */.service, .fuel, .insurance, .subscription, .accessories, .sparePart, .other]
     }
 }

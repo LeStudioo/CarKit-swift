@@ -100,28 +100,62 @@ extension AddSpendingScreen {
         )
         
         switch viewModel.selectedSpendingType {
+            
         case .vehiclePart:
             EmptyView()
+            
         case .service:
             TagsSectionView( // TODO: TBL
                 title: "Service",
                 items: viewModel.serviceTypeTags,
                 selectedItem: $viewModel.selectedServiceTag
             )
+            
         case .fuel:
-            EmptyView()
-        case .insurance:
-            EmptyView()
-        case .subscription:
-            EmptyView()
-        case .accessories:
-            EmptyView()
-        case .sparePart:
-            EmptyView()
-        case .other:
-            EmptyView()
+            fuelFields
+            
+        case .insurance, .subscription, .accessories, .sparePart, .other:
+            TextFieldView(
+                text: $viewModel.spendingName,
+                config: .init( // TODO: TBL
+                    title: "Name".localized,
+                    placeholder: "Câble USB".localized
+                )
+            )
+            
         case .none:
             EmptyView()
+        }
+    }
+    
+    @ViewBuilder
+    private var fuelFields: some View {
+        if let vehicle = viewModel.vehicle {
+            let motorization = vehicle.motorization
+            
+            if motorization == .thermal || motorization == .hybrid {
+                TextFieldView(
+                    text: $viewModel.fuelAmount,
+                    config: .init(
+                        title: "Quantity".localized, // TODO: TBL
+                        placeholder: "40.00",
+                        type: .decimalPad,
+                        unit: VolumeType.liter.symbol // TODO: Preferences VolumeType.symbol(for: volumeUnitPreference)
+                    )
+                )
+            }
+            
+            if motorization == .electric || motorization == .hybrid {
+                TextFieldView(
+                    text: $viewModel.chargeAmount,
+                    config: .init(
+                        title: "Quantity".localized, // TODO: TBL
+                        placeholder: "40.00",
+                        type: .decimalPad,
+                        unit: "kwh"
+                    )
+                )
+            }
         }
     }
     

@@ -50,7 +50,7 @@ public extension VehicleStore {
         }
     }
     
-    func delete(for id: String) {
+    func delete(for id: String) { // TODO: See how to sync with server if no connection
         Task {
             do {
                 vehicles.removeAll(where: { $0.id == id })

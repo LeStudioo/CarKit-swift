@@ -108,7 +108,7 @@ extension VehicleRowView {
 // MARK: - Preview
 #Preview {
     VStack(spacing: .large) {
-        var mockWithImage = VehicleUIModel.mock
+        let mockWithImage = VehicleUIModel.mock
         VehicleRowView(vehicle: mockWithImage)
 //            .onAppear {
 //                mockWithImage.imageData = UIImage(resource: .previewCar).pngData()

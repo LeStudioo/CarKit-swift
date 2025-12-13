@@ -5,7 +5,6 @@
 //  Created by Theo Sementa on 12/12/2025.
 //
 
-
 import SwiftUI
 
 struct FlowLayout: Layout {
@@ -33,7 +32,6 @@ struct FlowLayout: Layout {
             let rowXOffset = (bounds.width - row.frame.width) * alignment.horizontal.percent
             for index in row.range {
                 let xPos = rowXOffset + row.frame.minX + row.xOffsets[index - row.range.lowerBound] + bounds.minX
-                // swiftlint:disable:next line_length
                 let rowYAlignment = (row.frame.height - subviews[index].sizeThatFits(.unspecified).height) * alignment.vertical.percent
                 let yPos = row.frame.minY + rowYAlignment + bounds.minY
                 subviews[index].place(at: CGPoint(x: xPos, y: yPos), anchor: .topLeading, proposal: .unspecified)
