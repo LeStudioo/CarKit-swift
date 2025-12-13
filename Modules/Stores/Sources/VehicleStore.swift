@@ -35,6 +35,14 @@ public extension VehicleStore {
         return vehicles.first(where: { $0.id == vehicleId })
     }
     
+    func fetchOneEntity(by id: UUID) -> VehicleEntity? {
+        do {
+            return try vehicleRepo.fetchOneById(id)
+        } catch {
+            return nil
+        }
+    }
+    
     func create(body: VehicleBody) async {
         do {
             let entity = body.toEntity()

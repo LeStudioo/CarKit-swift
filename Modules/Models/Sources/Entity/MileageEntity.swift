@@ -18,10 +18,13 @@ public class MileageEntity: EntityProtocol, Identifiable {
     public var date: Date
     public var isSetupEntry: Bool?
     
+    public var vehicule: VehicleEntity
+    
     public var createdAt: Date
     public var updatedAt: Date?
     
     public init(
+        vehicule: VehicleEntity,
         remoteId: String? = nil,
         mileage: Int,
         date: Date,
@@ -29,6 +32,7 @@ public class MileageEntity: EntityProtocol, Identifiable {
         updatedAt: Date? = nil
     ) {
         self.localId = UUID()
+        self.vehicule = vehicule
         self.remoteId = remoteId
         self.mileage = mileage
         self.date = date

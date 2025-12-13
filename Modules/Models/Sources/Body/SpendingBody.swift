@@ -48,7 +48,7 @@ public struct SpendingBody: APIModel {
 
 public extension SpendingBody {
     
-    func create(
+    static func create(
         amount: Double? = nil,
         date: Date,
         recurrence: RecurrenceType,
@@ -74,7 +74,7 @@ public extension SpendingBody {
         )
     }
     
-    func update(
+    static func update(
         amount: Double? = nil,
         date: Date? = nil,
         recurrence: RecurrenceType? = nil,
@@ -94,6 +94,27 @@ public extension SpendingBody {
             currencyCode: currencyCode,
             name: name,
             service: service,
+            literQuantity: literQuantity,
+            elecQuantity: elecQuantity,
+            literUnit: literUnit
+        )
+    }
+    
+}
+
+// MARK: - Mappers
+public extension SpendingBody {
+    
+    func toEntity(vehicle: VehicleEntity, date: Date) -> SpendingEntity {
+        return .init(
+            vehicle: vehicle,
+            amount: amount,
+            date: date,
+            type: SpendingType(rawValue: type ?? "") ?? .none,
+            recurrence: RecurrenceType(rawValue: recurrence ?? "") ?? .none,
+            currencyCode: currencyCode ?? "",
+            name: name,
+            service: ServiceType(rawValue: service ?? ""),
             literQuantity: literQuantity,
             elecQuantity: elecQuantity,
             literUnit: literUnit

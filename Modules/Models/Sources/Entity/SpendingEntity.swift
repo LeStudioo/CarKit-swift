@@ -16,6 +16,7 @@ public class SpendingEntity: EntityProtocol, Identifiable {
     
     public var amount: Double?
     public var date: Date
+    public var type: SpendingType
     public var recurrence: RecurrenceType
     public var currencyCode: String
     
@@ -25,13 +26,17 @@ public class SpendingEntity: EntityProtocol, Identifiable {
     public var elecQuantity: Int?
     public var literUnit: String?
     
+    public var vehicle: VehicleEntity
+    
     public var createdAt: Date
     public var updatedAt: Date?
     
     public init(
+        vehicle: VehicleEntity,
         remoteId: String? = nil,
         amount: Double? = nil,
         date: Date,
+        type: SpendingType,
         recurrence: RecurrenceType,
         currencyCode: String,
         name: String? = nil,
@@ -41,10 +46,12 @@ public class SpendingEntity: EntityProtocol, Identifiable {
         literUnit: String? = nil,
         updatedAt: Date? = nil
     ) {
+        self.vehicle = vehicle
         self.localId = UUID()
         self.remoteId = remoteId
         self.amount = amount
         self.date = date
+        self.type = type
         self.recurrence = recurrence
         self.currencyCode = currencyCode
         self.name = name
@@ -56,4 +63,25 @@ public class SpendingEntity: EntityProtocol, Identifiable {
         self.updatedAt = updatedAt
     }
 
+}
+
+// MARK: - Mappers
+public extension SpendingEntity {
+    
+    func toUIModel() -> SpendingUIModel {
+        return .init(
+            id: localId.uuidString,
+            amount: amount,
+            date: date,
+            recurrence: recurrence,
+            type: type,
+            currencyCode: currencyCode,
+            name: name,
+            service: service,
+            literQuantity: literQuantity,
+            elecQuantity: elecQuantity,
+            literUnit: literUnit
+        )
+    }
+    
 }

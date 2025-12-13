@@ -17,4 +17,17 @@ public extension String {
         return Int(self) ?? 0
     }
     
+    func toDouble() -> Double {
+        let newVariable = NumberFormatter()
+        newVariable.numberStyle = .decimal
+        newVariable.locale = Locale.current
+        return newVariable.number(from: self) as? Double ?? 0
+    }
+    
+    func toDate() -> Date? {
+        let formatter = ISO8601DateFormatter()
+        formatter.formatOptions = [.withInternetDateTime]
+        return formatter.date(from: self)
+    }
+    
 }

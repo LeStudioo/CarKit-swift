@@ -23,6 +23,12 @@ public class VehicleEntity: EntityProtocol, Identifiable {
     public var year: Int?
     public var motorization: MotorizationType
     
+    @Relationship(deleteRule: .cascade, inverse: \SpendingEntity.vehicle)
+    public var spendings: [SpendingEntity]?
+    
+    @Relationship(deleteRule: .cascade, inverse: \MileageEntity.vehicule)
+    public var mileages: [MileageEntity]?
+    
     public var createdAt: Date
     public var updatedAt: Date?
     

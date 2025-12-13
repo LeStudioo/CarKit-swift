@@ -36,19 +36,20 @@ public struct VehicleDetailsScreen: View {
                         
                         VStack(spacing: .standard) {
                             
-//                            DetailPanel(
-//                                title: "detail_panel_spendings".localized,
-//                                style: .spending,
-//                                datas: spendingStore.last6MonthsSpendingsData
-//                            )
-//                            
-//                            DetailPanel(
-//                                title: "detail_panel_mileages".localized,
-//                                style: .mileage,
-//                                datas: mileageStore.dataForMileageChart
-//                            )
-//                            
-//                            CarInfoRow(carId: carId)
+                            NavigationButtonView(
+                                route: .push,
+                                destination: .spending(.create(vehicleId: vehicle.id))
+                            ) {
+                                Text("Add spending")
+                            }
+                            
+                            ForEach(viewModel.spendings) { spending in
+                                Text("\(spending.amount)")
+                            }
+                            
+                            ActionButtonView(title: "Pagination") {
+                                await viewModel.fetchSpendings()
+                            }
                             
                             Rectangle()
                                 .fill(Color.clear)
@@ -75,6 +76,9 @@ public struct VehicleDetailsScreen: View {
             .background(Color.Gray.veryLight)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
+            .task {
+                await viewModel.fetchSpendings()
+            }
         }
     }
 }

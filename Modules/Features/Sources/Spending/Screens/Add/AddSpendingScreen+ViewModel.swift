@@ -21,6 +21,9 @@ extension AddSpendingScreen {
         @ObservationIgnored
         @Dependency(\.vehicleStore) private var vehicleStore
         
+        @ObservationIgnored
+        @Dependency(\.spendingStore) private var spendingStore
+        
         // MARK: Variables
         var amount: String = ""
         var date: Date = Date()
@@ -78,6 +81,26 @@ extension AddSpendingScreen.ViewModel {
         if isStepTwo {
             isStepTwo = false
         } else {
+            dismiss()
+        }
+    }
+    
+    func createSpending(dismiss: DismissAction) async {
+        let body: SpendingBody = .create(
+            amount: amount.toDouble(),
+            date: date,
+            recurrence: .none,
+            type: selectedSpendingType,
+            currencyCode: "EUR", // TODO: Add user preference
+            name: spendingName.isEmpty ? nil : spendingName,
+            service: selectedServiceTag?.toServiceType(),
+            literQuantity: Int(fuelAmount),
+            elecQuantity: Int(chargeAmount),
+            literUnit: selectedSpendingType == .fuel ? "L" : nil // TODO: Add user preference
+        )
+        
+        let spending = await spendingStore.create(body: body)
+        if spending != nil {
             dismiss()
         }
     }

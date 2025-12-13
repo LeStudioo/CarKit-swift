@@ -14,6 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Models", path: "../Models"),
+        .package(name: "Utilities", path: "../Utilities"),
         .package(name: "Networking", path: "../Networking"),
         .package(name: "Repositories", path: "../Repositories"),
         
@@ -24,6 +25,7 @@ let package = Package(
             name: "Stores",
             dependencies: [
                 .product(name: "Models", package: "Models"),
+                .product(name: "Utilities", package: "Utilities"),
                 .product(name: "Networking", package: "Networking"),
                 .product(name: "Repositories", package: "Repositories"),
                 .product(name: "Dependencies", package: "swift-dependencies")

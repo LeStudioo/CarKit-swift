@@ -59,7 +59,7 @@ public struct AddSpendingScreen: View {
                 if viewModel.isStepTwo == false {
                     viewModel.isStepTwo = true
                 } else {
-//                    await viewModel.createVehicle(dismiss: dismiss)
+                    await viewModel.createSpending(dismiss: dismiss)
                 }
             }
             .padding(.large)
