@@ -9,10 +9,10 @@ import Foundation
 
 public struct SpendingBody: APIModel {
     public let amount: Double?
-    public let date: String
-    public let recurrence: String
-    public let type: String
-    public let currencyCode: String
+    public let date: String?
+    public let recurrence: String?
+    public let type: String?
+    public let currencyCode: String?
     
     public let name: String?
     public let service: String?
@@ -20,9 +20,37 @@ public struct SpendingBody: APIModel {
     public let elecQuantity: Int?
     public let literUnit: String?
     
-    public init(
+    private init(
         amount: Double? = nil,
-        date: String,
+        date: Date? = nil,
+        recurrence: RecurrenceType? = nil,
+        type: SpendingType? = nil,
+        currencyCode: String? = nil,
+        name: String? = nil,
+        service: ServiceType? = nil,
+        literQuantity: Int? = nil,
+        elecQuantity: Int? = nil,
+        literUnit: String? = nil
+    ) {
+        self.amount = amount
+        self.date = date?.ISO8601Format()
+        self.recurrence = recurrence?.rawValue
+        self.type = type?.rawValue
+        self.currencyCode = currencyCode
+        self.name = name
+        self.service = service?.rawValue
+        self.literQuantity = literQuantity
+        self.elecQuantity = elecQuantity
+        self.literUnit = literUnit
+    }
+    
+}
+
+public extension SpendingBody {
+    
+    func create(
+        amount: Double? = nil,
+        date: Date,
         recurrence: RecurrenceType,
         type: SpendingType,
         currencyCode: String,
@@ -31,17 +59,45 @@ public struct SpendingBody: APIModel {
         literQuantity: Int? = nil,
         elecQuantity: Int? = nil,
         literUnit: String? = nil
-    ) {
-        self.amount = amount
-        self.date = date
-        self.recurrence = recurrence.rawValue
-        self.type = type.rawValue
-        self.currencyCode = currencyCode
-        self.name = name
-        self.service = service?.rawValue
-        self.literQuantity = literQuantity
-        self.elecQuantity = elecQuantity
-        self.literUnit = literUnit
+    ) -> SpendingBody {
+        return .init(
+            amount: amount,
+            date: date,
+            recurrence: recurrence,
+            type: type,
+            currencyCode: currencyCode,
+            name: name,
+            service: service,
+            literQuantity: literQuantity,
+            elecQuantity: elecQuantity,
+            literUnit: literUnit
+        )
+    }
+    
+    func update(
+        amount: Double? = nil,
+        date: Date? = nil,
+        recurrence: RecurrenceType? = nil,
+        type: SpendingType? = nil,
+        currencyCode: String? = nil,
+        name: String? = nil,
+        service: ServiceType? = nil,
+        literQuantity: Int? = nil,
+        elecQuantity: Int? = nil,
+        literUnit: String? = nil
+    ) -> SpendingBody {
+        return .init(
+            amount: amount,
+            date: date,
+            recurrence: recurrence,
+            type: type,
+            currencyCode: currencyCode,
+            name: name,
+            service: service,
+            literQuantity: literQuantity,
+            elecQuantity: elecQuantity,
+            literUnit: literUnit
+        )
     }
     
 }

@@ -68,7 +68,7 @@ extension AddVehicleScreen.ViewModel {
             customName: customName,
             imageData: nil,
             year: year.toInt(),
-            motorization: motorization.rawValue
+            motorization: motorization
         )
         
         if let originalImage = selectedUIImage { // TODO: EDIT

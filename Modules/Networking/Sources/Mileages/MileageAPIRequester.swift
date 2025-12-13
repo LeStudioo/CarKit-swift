@@ -2,35 +2,34 @@
 //  File.swift
 //  Networking
 //
-//  Created by Theo Sementa on 10/12/2025.
+//  Created by Theo Sementa on 13/12/2025.
 //
 
 import Foundation
 import NetworkKit
 import Models
 
-public enum SpendingAPIRequester: APIRequestBuilder {
+public enum MileageAPIRequester: APIRequestBuilder {
     case fetchAll(vehicleId: String)
     case fetchOne(vehicleId: String, spendingId: String)
-    case create(vehicleId: String, body: SpendingBody)
-    case update(vehicleId: String, body: SpendingBody)
+    case create(vehicleId: String, body: MileageBody)
+    case update(vehicleId: String, body: MileageBody)
     case delete(vehicleId: String, spendingId: String)
 }
 
-public extension SpendingAPIRequester {
-    
+public extension MileageAPIRequester {
     var path: String {
         switch self {
         case .fetchAll(let vehicleId):
-            return NetworkPath.Spending.path(vehicleId: vehicleId)
+            return NetworkPath.Mileage.path(vehicleId: vehicleId)
         case .fetchOne(let vehicleId, let spendingId):
-            return NetworkPath.Spending.path(vehicleId: vehicleId, spendingId: spendingId)
+            return NetworkPath.Mileage.path(vehicleId: vehicleId, spendingId: spendingId)
         case .create(let vehicleId, _):
-            return NetworkPath.Spending.path(vehicleId: vehicleId)
+            return NetworkPath.Mileage.path(vehicleId: vehicleId)
         case .update(let vehicleId, _):
-            return NetworkPath.Spending.path(vehicleId: vehicleId)
+            return NetworkPath.Mileage.path(vehicleId: vehicleId)
         case .delete(let vehicleId, let spendingId):
-            return NetworkPath.Spending.path(vehicleId: vehicleId, spendingId: spendingId)
+            return NetworkPath.Mileage.path(vehicleId: vehicleId, spendingId: spendingId)
         }
     }
     
@@ -65,5 +64,4 @@ public extension SpendingAPIRequester {
             return try? JSONEncoder().encode(body)
         }
     }
-    
 }

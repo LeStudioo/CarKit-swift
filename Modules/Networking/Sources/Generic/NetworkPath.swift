@@ -40,6 +40,15 @@ struct NetworkPath {
             return "/vehicles/\(vehicleId)/spendings/\(spendingId)"
         }
     }
+    
+    struct Mileage {
+        static func path(vehicleId: String) -> String {
+            return "/vehicles/\(vehicleId)/mileages"
+        }
+        static func path(vehicleId: String, spendingId: String) -> String {
+            return "/vehicles/\(vehicleId)/mileages/\(spendingId)"
+        }
+    }
 
     struct Service {
         static func manage(carId: String) -> String {
@@ -50,12 +59,6 @@ struct NetworkPath {
     struct Part {
         static func manage(carId: String) -> String {
             return "/part/\(carId)"
-        }
-    }
-
-    struct Mileage {
-        static func manage(carId: String) -> String {
-            return "/mileage/\(carId)"
         }
     }
 

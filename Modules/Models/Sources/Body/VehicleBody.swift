@@ -42,7 +42,7 @@ public extension VehicleBody {
         customName: String,
         imageData: Data? = nil,
         year: Int? = nil,
-        motorization: String
+        motorization: MotorizationType
     ) -> VehicleBody {
         return .init(
             brand: brand,
@@ -50,7 +50,7 @@ public extension VehicleBody {
             customName: customName,
             imageData: imageData,
             year: year,
-            motorization: motorization
+            motorization: motorization.rawValue
         )
     }
     
@@ -60,7 +60,7 @@ public extension VehicleBody {
         customName: String? = nil,
         imageData: Data? = nil,
         year: Int? = nil,
-        motorization: String? = nil
+        motorization: MotorizationType? = nil
     ) -> VehicleBody {
         return .init(
             brand: brand,
@@ -68,7 +68,7 @@ public extension VehicleBody {
             customName: customName,
             imageData: imageData,
             year: year,
-            motorization: motorization
+            motorization: motorization?.rawValue
         )
     }
     

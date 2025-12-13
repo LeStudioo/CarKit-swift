@@ -8,7 +8,7 @@
 import Foundation
 import Models
 
-public protocol VehicleServiceProtocol {
+protocol VehicleServiceProtocol {
     static func fetchAll() async throws -> [VehicleAPIModel]
     static func fetchOne(by vehicleId: String) async throws -> VehicleAPIModel
     static func create(body: VehicleBody) async throws -> VehicleAPIModel
