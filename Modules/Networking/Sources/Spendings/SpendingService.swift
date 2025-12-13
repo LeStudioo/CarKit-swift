@@ -11,26 +11,46 @@ import NetworkKit
 
 public struct SpendingService: SpendingServiceProtocol {
     
-    func fetchAll(carId: String) async throws -> [SpendingAPIModel] {
+    static func fetchAll(vehicleId: String) async throws -> [SpendingAPIModel] {
         let response = try await NetworkService.sendRequest(
-            apiBuilder: SpendingAPIRequester.fetchAll(carId: carId),
+            apiBuilder: SpendingAPIRequester.fetchAll(vehicleId: vehicleId),
             responseModel: [SpendingAPIModel].self
         )
+        
         return response
     }
     
-    func create(carId: String, body: SpendingBody) async throws -> SpendingAPIModel {
+    static func fetchOne(vehicleId: String, spendingId: String) async throws -> SpendingAPIModel {
         let response = try await NetworkService.sendRequest(
-            apiBuilder: SpendingAPIRequester.create(carId: carId, body: body),
+            apiBuilder: SpendingAPIRequester.fetchOne(vehicleId: vehicleId, spendingId: spendingId),
             responseModel: SpendingAPIModel.self
         )
+        
         return response
     }
     
-    func delete(spendingId: String) async throws {
-        try await NetworkService.sendRequest(
-            apiBuilder: SpendingAPIRequester.delete(spendingId: spendingId)
+    static func create(vehicleId: String, body: SpendingBody) async throws -> SpendingAPIModel {
+        let response = try await NetworkService.sendRequest(
+            apiBuilder: SpendingAPIRequester.create(vehicleId: vehicleId, body: body),
+            responseModel: SpendingAPIModel.self
         )
+        
+        return response
     }
     
+    static func update(vehicleId: String, body: SpendingBody) async throws -> SpendingAPIModel {
+        let response = try await NetworkService.sendRequest(
+            apiBuilder: SpendingAPIRequester.update(vehicleId: vehicleId, body: body),
+            responseModel: SpendingAPIModel.self
+        )
+        
+        return response
+    }
+    
+    static func delete(vehicleId: String, spendingId: String) async throws {
+        try await NetworkService.sendRequest(
+            apiBuilder: SpendingAPIRequester.delete(vehicleId: vehicleId, spendingId: spendingId)
+        )
+    }
+        
 }

@@ -10,30 +10,38 @@ import NetworkKit
 import Models
 
 public enum SpendingAPIRequester: APIRequestBuilder {
-    case fetchAll(carId: String)
-    case create(carId: String, body: SpendingBody)
-    case delete(spendingId: String)
+    case fetchAll(vehicleId: String)
+    case fetchOne(vehicleId: String, spendingId: String)
+    case create(vehicleId: String, body: SpendingBody)
+    case update(vehicleId: String, body: SpendingBody)
+    case delete(vehicleId: String, spendingId: String)
 }
 
 public extension SpendingAPIRequester {
     
     var path: String {
         switch self {
-        case .fetchAll(let carId):
-            return NetworkPath.Spending.path(for: carId)
-        case .create(let carId, _):
-            return NetworkPath.Spending.path(for: carId)
-        case .delete(let spendingId):
-            return NetworkPath.Spending.path(for: spendingId)
+        case .fetchAll(let vehicleId):
+            return NetworkPath.Spending.path(vehicleId: vehicleId)
+        case .fetchOne(let vehicleId, let spendingId):
+            return NetworkPath.Spending.path(vehicleId: vehicleId, spendingId: spendingId)
+        case .create(let vehicleId, let body):
+            return NetworkPath.Spending.path(vehicleId: vehicleId)
+        case .update(let vehicleId, let body):
+            return NetworkPath.Spending.path(vehicleId: vehicleId)
+        case .delete(let vehicleId, let spendingId):
+            return NetworkPath.Spending.path(vehicleId: vehicleId, spendingId: spendingId)
         }
     }
     
     var httpMethod: HTTPMethod {
         switch self {
-        case .fetchAll:
+        case .fetchAll, .fetchOne:
             return .GET
         case .create:
             return .POST
+        case .update:
+            return .PUT
         case .delete:
             return .DELETE
         }
@@ -49,9 +57,11 @@ public extension SpendingAPIRequester {
     
     var body: Data? {
         switch self {
-        case .fetchAll, .delete:
+        case .fetchAll, .fetchOne, .delete:
             return nil
         case .create(_, let body):
+            return try? JSONEncoder().encode(body)
+        case .update(_, let body):
             return try? JSONEncoder().encode(body)
         }
     }

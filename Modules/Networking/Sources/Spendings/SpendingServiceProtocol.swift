@@ -9,7 +9,9 @@ import Foundation
 import Models
 
 protocol SpendingServiceProtocol {
-    func fetchAll(carId: String) async throws -> [SpendingAPIModel]
-    func create(carId: String, body: SpendingBody) async throws -> SpendingAPIModel
-    func delete(spendingId: String) async throws
+    static func fetchAll(vehicleId: String) async throws -> [SpendingAPIModel]
+    static func fetchOne(vehicleId: String, spendingId: String) async throws -> SpendingAPIModel
+    static func create(vehicleId: String, body: SpendingBody) async throws -> SpendingAPIModel
+    static func update(vehicleId: String, body: SpendingBody) async throws -> SpendingAPIModel
+    static func delete(vehicleId: String, spendingId: String) async throws
 }

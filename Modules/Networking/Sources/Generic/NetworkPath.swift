@@ -25,16 +25,19 @@ struct NetworkPath {
     
     struct Vehicle {
         static func path() -> String {
-            return "/vehicle"
+            return "/vehicles"
         }
         static func path(for id: String) -> String {
-            return "/vehicle/\(id)"
+            return "/vehicles/\(id)"
         }
     }
 
     struct Spending {
-        static func path(for id: String) -> String {
-            return "/spending/\(id)"
+        static func path(vehicleId: String) -> String {
+            return "/vehicles/\(vehicleId)/spendings"
+        }
+        static func path(vehicleId: String, spendingId: String) -> String {
+            return "/vehicles/\(vehicleId)/spendings/\(spendingId)"
         }
     }
 
