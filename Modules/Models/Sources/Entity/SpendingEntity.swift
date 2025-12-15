@@ -22,8 +22,8 @@ public class SpendingEntity: EntityProtocol, Identifiable {
     
     public var name: String?
     public var service: ServiceType?
-    public var literQuantity: Int?
-    public var elecQuantity: Int?
+    public var literQuantity: Double?
+    public var elecQuantity: Double?
     public var literUnit: String?
     
     public var vehicle: VehicleEntity
@@ -41,8 +41,8 @@ public class SpendingEntity: EntityProtocol, Identifiable {
         currencyCode: String,
         name: String? = nil,
         service: ServiceType? = nil,
-        literQuantity: Int? = nil,
-        elecQuantity: Int? = nil,
+        literQuantity: Double? = nil,
+        elecQuantity: Double? = nil,
         literUnit: String? = nil,
         updatedAt: Date? = nil
     ) {
@@ -80,7 +80,9 @@ public extension SpendingEntity {
             service: service,
             literQuantity: literQuantity,
             elecQuantity: elecQuantity,
-            literUnit: literUnit
+            literUnit: literUnit,
+            fromVehicle: vehicle.toUIModel(),
+            isLocalModel: true
         )
     }
     

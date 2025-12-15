@@ -43,16 +43,8 @@ public struct VehicleDetailsScreen: View {
                                 datas: viewModel.spendingStore.last6MonthsSpendingsData,
                                 bigValue: viewModel.expenseAmountLast6Months,
                                 addAction: { router.push(.spending(.create(vehicleId: vehicle.id))) },
-                                viewMoreAction: { }
+                                viewMoreAction: { router.push(.spending(.list)) }
                             )
-                            
-                            ForEach(viewModel.spendingStore.spendings) { spending in
-                                Text("\(spending.amount)")
-                            }
-                            
-                            ActionButtonView(title: "Pagination") {
-                                await viewModel.fetchSpendings()
-                            }
                             
                             Rectangle()
                                 .fill(Color.clear)
@@ -79,9 +71,8 @@ public struct VehicleDetailsScreen: View {
             .background(Color.Gray.veryLight)
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
-            .task {
-                viewModel.spendingStore.spendings = []
-                await viewModel.fetchSpendings()
+            .onAppear {
+                viewModel.setVehicleInSpendingStore()
                 viewModel.spendingStore.fetchLast6MonthsSpendingsData()
             }
         }

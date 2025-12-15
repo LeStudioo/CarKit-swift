@@ -52,13 +52,9 @@ extension VehicleDetailsScreen.ViewModel {
 extension VehicleDetailsScreen.ViewModel {
     
     @MainActor
-    func fetchSpendings() async {
+    func setVehicleInSpendingStore() {
         guard let vehicle else { return }
-        
         spendingStore.currentVehicle = try? spendingStore.vehicleRepo.fetchOneById(UUID(uuidString: vehicle.id) ?? UUID())
-        await spendingStore.fetchWithPagination(page: page)
-        
-        page += 1
     }
     
 }

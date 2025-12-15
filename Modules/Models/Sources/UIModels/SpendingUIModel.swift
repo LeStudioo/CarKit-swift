@@ -17,9 +17,13 @@ public struct SpendingUIModel: Identifiable {
 
     public let name: String?
     public let service: ServiceType?
-    public let literQuantity: Int?
-    public let elecQuantity: Int?
+    public let literQuantity: Double?
+    public let elecQuantity: Double?
     public let literUnit: String?
+    
+    public let fromVehicle: VehicleUIModel
+    
+    public let isLocalModel: Bool
     
     public init(
         id: String,
@@ -30,9 +34,11 @@ public struct SpendingUIModel: Identifiable {
         currencyCode: String,
         name: String? = nil,
         service: ServiceType? = nil,
-        literQuantity: Int? = nil,
-        elecQuantity: Int? = nil,
-        literUnit: String? = nil
+        literQuantity: Double? = nil,
+        elecQuantity: Double? = nil,
+        literUnit: String? = nil,
+        fromVehicle: VehicleUIModel,
+        isLocalModel: Bool
     ) {
         self.id = id
         self.amount = amount
@@ -45,5 +51,7 @@ public struct SpendingUIModel: Identifiable {
         self.literQuantity = literQuantity
         self.elecQuantity = elecQuantity
         self.literUnit = literUnit
+        self.fromVehicle = fromVehicle
+        self.isLocalModel = isLocalModel
     }
 }

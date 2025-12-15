@@ -94,8 +94,8 @@ extension AddSpendingScreen.ViewModel {
             currencyCode: "EUR", // TODO: Add user preference
             name: spendingName.isEmpty ? nil : spendingName,
             service: selectedServiceTag?.toServiceType(),
-            literQuantity: Int(fuelAmount),
-            elecQuantity: Int(chargeAmount),
+            literQuantity: fuelAmount.toDouble(),
+            elecQuantity: chargeAmount.toDouble(),
             literUnit: selectedSpendingType == .fuel ? "L" : nil // TODO: Add user preference
         )
         

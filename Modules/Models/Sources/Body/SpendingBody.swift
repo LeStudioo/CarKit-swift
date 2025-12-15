@@ -16,8 +16,8 @@ public struct SpendingBody: APIModel {
     
     public let name: String?
     public let service: String?
-    public let literQuantity: Int?
-    public let elecQuantity: Int?
+    public let literQuantity: Double?
+    public let elecQuantity: Double?
     public let literUnit: String?
     
     private init(
@@ -28,8 +28,8 @@ public struct SpendingBody: APIModel {
         currencyCode: String? = nil,
         name: String? = nil,
         service: ServiceType? = nil,
-        literQuantity: Int? = nil,
-        elecQuantity: Int? = nil,
+        literQuantity: Double? = nil,
+        elecQuantity: Double? = nil,
         literUnit: String? = nil
     ) {
         self.amount = amount
@@ -56,8 +56,8 @@ public extension SpendingBody {
         currencyCode: String,
         name: String? = nil,
         service: ServiceType? = nil,
-        literQuantity: Int? = nil,
-        elecQuantity: Int? = nil,
+        literQuantity: Double? = nil,
+        elecQuantity: Double? = nil,
         literUnit: String? = nil
     ) -> SpendingBody {
         return .init(
@@ -82,8 +82,8 @@ public extension SpendingBody {
         currencyCode: String? = nil,
         name: String? = nil,
         service: ServiceType? = nil,
-        literQuantity: Int? = nil,
-        elecQuantity: Int? = nil,
+        literQuantity: Double? = nil,
+        elecQuantity: Double? = nil,
         literUnit: String? = nil
     ) -> SpendingBody {
         return .init(

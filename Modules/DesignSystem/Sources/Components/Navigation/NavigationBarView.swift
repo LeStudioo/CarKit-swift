@@ -115,7 +115,7 @@ extension NavigationBarView {
     /// small navigation
     public init(
         title: String,
-        subtitle: String,
+        subtitle: String? = nil,
         onCancel: (() -> Void)? = nil
     ) {
         self.title = title

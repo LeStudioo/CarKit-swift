@@ -9,5 +9,6 @@ import Foundation
 import NavigationKit
 
 public enum SpendingDestination: DestinationItem {
+    case list
     case create(vehicleId: String)
 }

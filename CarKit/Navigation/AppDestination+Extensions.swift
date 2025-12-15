@@ -40,6 +40,8 @@ extension AppDestination {
     @ViewBuilder
     static private func spendingView(_ destination: SpendingDestination) -> some View {
         switch destination {
+        case .list:
+            SpendingsListScreen()
         case .create(let vehicleId):
             AddSpendingScreen(vehicleId: vehicleId)
         }

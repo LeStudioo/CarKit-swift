@@ -25,11 +25,13 @@ let package = Package(
             name: "Home",
             dependencies: [
                 "Vehicle",
-                
                 .product(name: "DesignSystem", package: "DesignSystem"),
                 .product(name: "Models", package: "Models"),
                 .product(name: "Stores", package: "Stores"),
                 .product(name: "Navigation", package: "Navigation")
+            ],
+            swiftSettings: [
+                .defaultIsolation(MainActor.self)
             ]
         ),
         
@@ -41,6 +43,9 @@ let package = Package(
                 .product(name: "Stores", package: "Stores"),
                 .product(name: "Navigation", package: "Navigation"),
                 .product(name: "ToastBannerKit", package: "ToastBannerKit")
+            ],
+            swiftSettings: [
+                .defaultIsolation(MainActor.self)
             ]
         ),
         
@@ -53,6 +58,9 @@ let package = Package(
                 .product(name: "Navigation", package: "Navigation"),
                 .product(name: "Utilities", package: "Utilities"),
                 .product(name: "ToastBannerKit", package: "ToastBannerKit")
+            ],
+            swiftSettings: [
+                .defaultIsolation(MainActor.self)
             ]
         )
     ]

@@ -1,5 +1,5 @@
 //
-//  ExpenseRowView.swift
+//  SpendingRowView.swift
 //  DesignSystem
 //
 //  Created by Theo Sementa on 09/12/2025.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-public struct ExpenseRowView: View {
+public struct SpendingRowView: View {
 
     // MARK: Dependencies
     private let price: Double
@@ -61,7 +61,7 @@ public struct ExpenseRowView: View {
 
 // MARK: - Preview
 #Preview {
-    ExpenseRowView(
+    SpendingRowView(
         price: 180,
         title: "Glow plug",
         subtitle: "Vehicle part",

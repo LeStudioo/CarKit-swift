@@ -42,5 +42,12 @@ public extension View {
                     .strokeBorder(strokeColor ?? .clear, lineWidth: 1)
             )
     }
+    
+    func disableRowStyle() -> some View {
+        return self
+            .listRowSeparator(.hidden)
+            .listRowBackground(Color.clear)
+            .listRowInsets(.init())
+    }
 
 }
