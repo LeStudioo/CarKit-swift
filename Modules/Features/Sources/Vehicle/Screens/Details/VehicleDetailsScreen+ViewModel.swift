@@ -41,6 +41,11 @@ extension VehicleDetailsScreen.ViewModel {
         return vehicleStore.fetchOne(by: vehiculeId)
     }
     
+    @MainActor
+    var expenseAmountLast6Months: Double {
+        return spendingStore.last6MonthsSpendingsData.reduce(0) { $0 + $1.value }
+    }
+    
 }
 
 // MARK: - Public functions

@@ -14,6 +14,8 @@ public struct VehicleDetailsScreen: View {
     // MARK: States
     @State private var viewModel: ViewModel
     
+    @EnvironmentObject private var router: Router<AppDestination>
+    
     // MARK: Init
     public init(vehicleId: String) {
         self._viewModel = State(wrappedValue: .init(vehiculeId: vehicleId))
@@ -35,13 +37,14 @@ public struct VehicleDetailsScreen: View {
                             .frame(height: viewModel.imageHeight)
                         
                         VStack(spacing: .standard) {
-                            
-                            NavigationButtonView(
-                                route: .push,
-                                destination: .spending(.create(vehicleId: vehicle.id))
-                            ) {
-                                Text("Add spending")
-                            }
+                            DetailPanelView(
+                                title: "Expenses this month",
+                                style: .spending,
+                                datas: viewModel.spendingStore.last6MonthsSpendingsData,
+                                bigValue: viewModel.expenseAmountLast6Months,
+                                addAction: { router.push(.spending(.create(vehicleId: vehicle.id))) },
+                                viewMoreAction: { }
+                            )
                             
                             ForEach(viewModel.spendingStore.spendings) { spending in
                                 Text("\(spending.amount)")
@@ -77,7 +80,9 @@ public struct VehicleDetailsScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .task {
+                viewModel.spendingStore.spendings = []
                 await viewModel.fetchSpendings()
+                viewModel.spendingStore.fetchLast6MonthsSpendingsData()
             }
         }
     }

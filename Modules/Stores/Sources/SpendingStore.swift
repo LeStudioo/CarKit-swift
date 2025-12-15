@@ -19,6 +19,8 @@ public final class SpendingStore: @unchecked Sendable {
     
     public var spendings: [SpendingUIModel] = []
     
+    public private(set) var last6MonthsSpendingsData: [BarChartUIModel] = []
+    
     public let vehicleRepo: VehicleRepository = .init()
     private let spendingRepo: SpendingRepository = .init()
     
@@ -32,6 +34,15 @@ public extension SpendingStore {
             let spendings = try spendingRepo.fetchWithPagination(vehicleId: currentVehicle.localId, page: page)
             let spendingsUIModel = spendings.map { $0.toUIModel() }
             self.spendings.append(contentsOf: spendingsUIModel)
+        } catch {
+            
+        }
+    }
+    
+    func fetchLast6MonthsSpendingsData() {
+        do {
+            guard let currentVehicle else { throw NSError(domain: "CarKit", code: 404) } // TODO: Send real error
+            self.last6MonthsSpendingsData = try spendingRepo.fetchLastSpendingsData(for: currentVehicle.localId, period: .sixMonth)
         } catch {
             
         }

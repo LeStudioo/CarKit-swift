@@ -14,6 +14,7 @@ let package = Package(
     ],
     dependencies: [
         .package(name: "Models", path: "../Models"),
+        .package(name: "Utilities", path: "../Utilities"),
         .package(name: "Persistence", path: "../Persistence")
     ],
     targets: [
@@ -21,6 +22,7 @@ let package = Package(
             name: "Repositories",
             dependencies: [
                 .product(name: "Models", package: "Models"),
+                .product(name: "Utilities", package: "Utilities"),
                 .product(name: "Persistence", package: "Persistence")
             ]
         )
