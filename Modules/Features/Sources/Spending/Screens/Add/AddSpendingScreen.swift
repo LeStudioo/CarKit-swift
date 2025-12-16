@@ -9,6 +9,7 @@ import SwiftUI
 import DesignSystem
 import Utilities
 import Models
+import Navigation
 
 public struct AddSpendingScreen: View {
     
@@ -17,6 +18,7 @@ public struct AddSpendingScreen: View {
     
     // MARK: Environments
     @Environment(\.dismiss) private var dismiss
+    @EnvironmentObject private var router: Router<AppDestination>
     
     // MARK: Init
     public init(vehicleId: String) {
@@ -59,7 +61,7 @@ public struct AddSpendingScreen: View {
                 if viewModel.isStepTwo == false {
                     viewModel.isStepTwo = true
                 } else {
-                    await viewModel.createSpending(dismiss: dismiss)
+                    await viewModel.createSpending(router: router)
                 }
             }
             .padding(.large)

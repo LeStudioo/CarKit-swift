@@ -42,6 +42,8 @@ extension AppDestination {
         switch destination {
         case .list:
             SpendingsListScreen()
+        case .detail(let spendingId):
+            SpendingDetailsScreen(spendingId: spendingId)
         case .create(let vehicleId):
             AddSpendingScreen(vehicleId: vehicleId)
         }

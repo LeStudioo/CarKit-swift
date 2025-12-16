@@ -72,7 +72,6 @@ public struct VehicleDetailsScreen: View {
             .navigationBarTitleDisplayMode(.inline)
             .navigationBarBackButtonHidden(true)
             .onAppear {
-                viewModel.setVehicleInSpendingStore()
                 viewModel.spendingStore.fetchLast6MonthsSpendingsData()
             }
         }

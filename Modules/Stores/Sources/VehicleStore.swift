@@ -15,6 +15,7 @@ import Repositories
 public final class VehicleStore: @unchecked Sendable {
     
     public var vehicles: [VehicleUIModel] = []
+    public var currentVehicle: VehicleEntity?
     
     private let vehicleRepo: VehicleRepository = .init()
 }

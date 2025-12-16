@@ -9,6 +9,7 @@ import Foundation
 import Models
 import Stores
 import SwiftUI
+import Navigation
 
 extension AddSpendingScreen {
     
@@ -85,7 +86,7 @@ extension AddSpendingScreen.ViewModel {
         }
     }
     
-    func createSpending(dismiss: DismissAction) async {
+    func createSpending(router: Router<AppDestination>) async {
         let body: SpendingBody = .create(
             amount: amount.toDouble(),
             date: date,
@@ -100,9 +101,7 @@ extension AddSpendingScreen.ViewModel {
         )
         
         let spending = await spendingStore.create(body: body)
-        if spending != nil {
-            dismiss()
-        }
+        if spending != nil { router.dismiss() }
     }
     
 }

@@ -29,3 +29,13 @@ extension HomeScreen.ViewModel {
     }
     
 }
+
+// MARK: - Public function
+extension HomeScreen.ViewModel {
+    
+    func setCurrentVehicle(by vehicleId: String) {
+        guard let vehicleUuid = UUID(uuidString: vehicleId) else { return }
+        vehicleStore.currentVehicle = vehicleStore.fetchOneEntity(by: vehicleUuid)
+    }
+    
+}

@@ -10,5 +10,6 @@ import NavigationKit
 
 public enum SpendingDestination: DestinationItem {
     case list
+    case detail(spendingId: String)
     case create(vehicleId: String)
 }

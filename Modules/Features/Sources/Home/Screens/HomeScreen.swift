@@ -35,10 +35,10 @@ public struct HomeScreen: View {
                     ForEach(viewModel.vehicleStore.vehicles) { vehicle in
                         NavigationButtonView(
                             route: .push,
-                            destination: .vehicle(.detail(vehicleId: vehicle.id))
-                        ) {
-                            VehicleRowView(vehicle: vehicle)
-                        }
+                            destination: .vehicle(.detail(vehicleId: vehicle.id)),
+                            onNavigate: { viewModel.setCurrentVehicle(by: vehicle.id) },
+                            label: { VehicleRowView(vehicle: vehicle) }
+                        )
                     }
                     
                     ActionButtonView(

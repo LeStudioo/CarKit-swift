@@ -30,17 +30,17 @@ public struct SpendingsListScreen: View {
                     .padding(.bottom, .small)
                 
                 ForEach(viewModel.spendingStore.spendings) { spending in
-    //                NavigationButtonView(
-    //                    route: .modalFitContent,
-    //                    destination: .spending(.detail(spendingId: spending.localId))
-    //                ) {
-                    SpendingRowView(
-                        price: spending.amount ?? 0,
-                        title: spending.title,
-                        subtitle: spending.subtitle,
-                        date: spending.date
-                    )
-    //                }
+                    NavigationButtonView(
+                        route: .modalFitContent,
+                        destination: .spending(.detail(spendingId: spending.id))
+                    ) {
+                        SpendingRowView(
+                            price: spending.amount ?? 0,
+                            title: spending.title,
+                            subtitle: spending.subtitle,
+                            date: spending.date
+                        )
+                    }
                 }
                 .disableRowStyle()
                 .padding(.vertical, .small)

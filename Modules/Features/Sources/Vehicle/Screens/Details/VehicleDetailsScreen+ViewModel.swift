@@ -47,14 +47,3 @@ extension VehicleDetailsScreen.ViewModel {
     }
     
 }
-
-// MARK: - Public functions
-extension VehicleDetailsScreen.ViewModel {
-    
-    @MainActor
-    func setVehicleInSpendingStore() {
-        guard let vehicle else { return }
-        spendingStore.currentVehicle = try? spendingStore.vehicleRepo.fetchOneById(UUID(uuidString: vehicle.id) ?? UUID())
-    }
-    
-}

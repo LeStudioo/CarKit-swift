@@ -15,8 +15,6 @@ import Dependencies
 @MainActor @Observable
 public final class SpendingStore: @unchecked Sendable {
     
-    public var currentVehicle: VehicleEntity?
-    
     public var spendings: [SpendingUIModel] = []
     
     public private(set) var last6MonthsSpendingsData: [BarChartUIModel] = []
@@ -30,7 +28,7 @@ public extension SpendingStore {
     
     func fetchWithPagination(page: Int) async {
         do {
-            guard let currentVehicle else { throw NSError(domain: "CarKit", code: 404) } // TODO: Send real error
+            guard let currentVehicle = getCurrentVehicle() else { throw NSError(domain: "CarKit", code: 404) } // TODO: Send real error
             let spendings = try spendingRepo.fetchWithPagination(vehicleId: currentVehicle.localId, page: page)
             let spendingsUIModel = spendings.map { $0.toUIModel() }
             self.spendings.append(contentsOf: spendingsUIModel)
@@ -41,7 +39,7 @@ public extension SpendingStore {
     
     func fetchLast6MonthsSpendingsData() {
         do {
-            guard let currentVehicle else { throw NSError(domain: "CarKit", code: 404) } // TODO: Send real error
+            guard let currentVehicle = getCurrentVehicle() else { throw NSError(domain: "CarKit", code: 404) } // TODO: Send real error
             self.last6MonthsSpendingsData = try spendingRepo.fetchLastSpendingsData(for: currentVehicle.localId, period: .sixMonth)
         } catch {
             
@@ -50,7 +48,7 @@ public extension SpendingStore {
     
     func create(body: SpendingBody) async -> SpendingUIModel? {
         do {
-            guard let currentVehicle, let date = body.date?.toDate() else { throw NSError(domain: "CarKit", code: 404) } // TODO: Send real error
+            guard let currentVehicle = getCurrentVehicle(), let date = body.date?.toDate() else { throw NSError(domain: "CarKit", code: 404) } // TODO: Send real error
             
             let entity = body.toEntity(vehicle: currentVehicle, date: date)
             try spendingRepo.insert(entity)
@@ -64,6 +62,20 @@ public extension SpendingStore {
         } catch {
             return nil
         }
+    }
+    
+}
+
+// MARK: - Utils
+public extension SpendingStore {
+    
+    func getCurrentVehicle() -> VehicleEntity? {
+        @Dependency(\.vehicleStore) var vehicleStore
+        return vehicleStore.currentVehicle
+    }
+    
+    func spending(for spendingId: String) -> SpendingUIModel? {
+        return self.spendings.first(where: { $0.id == spendingId })
     }
     
 }
