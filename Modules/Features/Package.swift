@@ -7,6 +7,7 @@ let package = Package(
     name: "Features",
     platforms: [.iOS(.v17)],
     products: [
+        .library(name: "Authentification", targets: ["Authentification"]),
         .library(name: "Home", targets: ["Home"]),
         .library(name: "Vehicle", targets: ["Vehicle"]),
         .library(name: "Spending", targets: ["Spending"])
@@ -17,10 +18,25 @@ let package = Package(
         .package(name: "Stores", path: "../Stores"),
         .package(name: "Navigation", path: "../Navigation"),
         .package(name: "Utilities", path: "../Utilities"),
+        .package(name: "Core", path: "../Core"),
         
         .package(url: "https://github.com/theosementa/ToastBannerKit.git", exact: "1.0.1")
     ],
     targets: [
+        .target(
+            name: "Authentification",
+            dependencies: [
+                .product(name: "Core", package: "Core"),
+                .product(name: "DesignSystem", package: "DesignSystem"),
+                .product(name: "Models", package: "Models"),
+                .product(name: "Stores", package: "Stores"),
+                .product(name: "Navigation", package: "Navigation")
+            ],
+            swiftSettings: [
+                .defaultIsolation(MainActor.self)
+            ]
+        ),
+        
         .target(
             name: "Home",
             dependencies: [

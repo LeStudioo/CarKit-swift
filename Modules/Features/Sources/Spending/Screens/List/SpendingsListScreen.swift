@@ -1,5 +1,5 @@
 //
-//  SwiftUIView.swift
+//  SpendingsListScreen.swift
 //  Features
 //
 //  Created by Theo Sementa on 15/12/2025.
