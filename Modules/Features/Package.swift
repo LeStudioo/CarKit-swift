@@ -20,7 +20,8 @@ let package = Package(
         .package(name: "Utilities", path: "../Utilities"),
         .package(name: "Core", path: "../Core"),
         
-        .package(url: "https://github.com/theosementa/ToastBannerKit.git", exact: "1.0.1")
+        .package(url: "https://github.com/theosementa/ToastBannerKit.git", exact: "1.0.1"),
+        .package(url: "https://github.com/google/GoogleSignIn-iOS", exact: "9.0.0")
     ],
     targets: [
         .target(
@@ -30,7 +31,9 @@ let package = Package(
                 .product(name: "DesignSystem", package: "DesignSystem"),
                 .product(name: "Models", package: "Models"),
                 .product(name: "Stores", package: "Stores"),
-                .product(name: "Navigation", package: "Navigation")
+                .product(name: "Utilities", package: "Utilities"),
+                .product(name: "Navigation", package: "Navigation"),
+                .product(name: "GoogleSignIn", package: "GoogleSignIn-iOS")
             ],
             swiftSettings: [
                 .defaultIsolation(MainActor.self)

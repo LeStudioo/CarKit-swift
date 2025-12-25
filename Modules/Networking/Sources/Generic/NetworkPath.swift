@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct NetworkPath {
+struct NetworkPath { // TODO: CHange to enum with static
     static let baseURL: String = "https://carkit.lazyy.fr"
 
     struct Auth {
@@ -17,7 +17,6 @@ struct NetworkPath {
 
     struct User {
         static let me: String = "/user/me" // swiftlint:disable:this identifier_name
-        static let register: String = "/user/register"
         static func refreshToken(refreshToken: String) -> String {
             return "/user/refresh-token/\(refreshToken)"
         }

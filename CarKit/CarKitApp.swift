@@ -13,6 +13,7 @@ struct CarKitApp: App {
     var body: some Scene {
         WindowGroup {
             RootScreen()
+                .preferredColorScheme(.light)
         }
     }
 }

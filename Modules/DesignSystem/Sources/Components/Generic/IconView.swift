@@ -11,16 +11,19 @@ public struct IconView: View {
 
     // MARK: Dependencies
     private let asset: ImageType
+    private let renderingMode: Image.TemplateRenderingMode
     private let size: IconSizeType
     private let color: Color
 
     // MARK: Init
     public init(
         asset: ImageType,
+        renderingMode: Image.TemplateRenderingMode = .template,
         size: IconSizeType = .standard,
         color: Color = Color.Base.black
     ) {
         self.asset = asset
+        self.renderingMode = renderingMode
         self.size = size
         self.color = color
     }
@@ -29,7 +32,7 @@ public struct IconView: View {
     public var body: some View {
         Image(asset: asset)
             .resizable()
-            .renderingMode(.template)
+            .renderingMode(renderingMode)
             .foregroundStyle(color)
             .frame(width: size.rawValue, height: size.rawValue)
     }

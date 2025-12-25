@@ -5,14 +5,14 @@
 //  Created by Theo Sementa on 24/12/2025.
 //
 
-
 import Foundation
 import Models
 import Dependencies
+import Networking
+import KeychainKit
 
 @MainActor @Observable
 public final class UserStore: @unchecked Sendable {
-//    @MainActor public static let shared = UserStore()
 
     public var currentUser: UserAPIModel?
 
@@ -22,7 +22,29 @@ public final class UserStore: @unchecked Sendable {
 }
 
 extension UserStore {
+    
+    public func refreshToken() async throws {
+        @Dependency(\.userStore) var userStore
+        
+        if let refreshTokenStored = KeychainService.getItem(key: KeychainKeys.refreshToken, type: String.self) {
+            let response = try await NetworkService.sendRequest(
+                apiBuilder: UserAPIRequester.refreshToken(refreshToken: refreshTokenStored),
+                responseModel: AuthResponseAPIModel.self
+            )
 
+            if response.accessToken.isNotEmpty && response.refreshToken.isNotEmpty {
+                TokenManager.shared.setTokens(accessToken: response.accessToken, refreshToken: response.refreshToken)
+                userStore.currentUser = response.user
+            } else {
+                throw NetworkError.refreshTokenFailed
+            }
+        } else {
+            print("⚠️ Keychain EMPTY")
+            userStore.currentUser = nil
+            TokenManager.shared.setTokens(accessToken: "", refreshToken: "")
+            throw NetworkError.refreshTokenFailed
+        }
+    }
 
 }
 
