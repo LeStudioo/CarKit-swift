@@ -21,6 +21,7 @@ import Authentification
 struct RootScreen: View {
     
     @StateObject private var router: Router<AppDestination> = .init()
+    @StateObject private var loginRouter: Router<AppDestination> = .init()
     @State private var toastBannerService: ToastBannerService = .shared
     
     @Dependency(\.appStateService) private var appStateService
@@ -67,7 +68,11 @@ extension RootScreen {
                 initialContent: { HomeScreen() }
             )
         case .needToLogin:
-            LoginScreen()
+            NavigationStackView(
+                router: loginRouter,
+                destinationContent: { AppDestination.content(for: $0) },
+                initialContent: { LoginScreen() }
+            )
         }
     }
     

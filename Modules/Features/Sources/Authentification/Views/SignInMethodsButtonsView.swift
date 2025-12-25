@@ -7,9 +7,12 @@
 
 import SwiftUI
 import Core
+import Navigation
 
 struct SignInMethodsButtonsView: View {
 
+    @EnvironmentObject private var router: Router<AppDestination>
+    
     // MARK: Constants
     private let signInWithAppleManager: SignInWithAppleService = .init()
     private let signInWithGoogleManager: SignInWithGoogleService = .init()
@@ -40,7 +43,7 @@ struct SignInMethodsButtonsView: View {
                 
                 Button {
                     guard let url = URL(string: AppConstantType.appEULA) else { return }
-                    UIApplication.shared.open(url)
+                    router.present(route: .fullScreenCover, .shared(.sfSafari(url: url)))
                 } label: {
                     Text("login_condition_general".localized)
                         .customFont(.Text.Medium.bold, color: .Brand.secondary)
