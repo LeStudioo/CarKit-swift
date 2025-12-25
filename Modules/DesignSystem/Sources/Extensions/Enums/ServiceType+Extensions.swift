@@ -8,16 +8,17 @@
 import Foundation
 import Models
 
+@MainActor
 extension ServiceType {
     
-    public var name: String { // TODO: TBL
+    public var name: String {
         switch self {
         case .carWash:
-            return "Car wash"
+            return "service_car_wash".localized
         case .oilChange:
-            return "Oil change"
+            return "service_oil_change".localized
         case .vacuum:
-            return "Vacuum"
+            return "service_vacuum".localized
         case .none:
             return "Unknown"
         }

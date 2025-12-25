@@ -28,7 +28,7 @@ public extension SpendingStore {
     
     func fetchWithPagination(page: Int) async {
         do {
-            guard let currentVehicle = getCurrentVehicle() else { throw NSError(domain: "CarKit", code: 404) } // TODO: Send real error
+            guard let currentVehicle = getCurrentVehicle() else { throw NetworkError.notFound }
             let spendings = try spendingRepo.fetchWithPagination(vehicleId: currentVehicle.localId, page: page)
             let spendingsUIModel = spendings.map { $0.toUIModel() }
             self.spendings.append(contentsOf: spendingsUIModel)
@@ -39,7 +39,7 @@ public extension SpendingStore {
     
     func fetchLast6MonthsSpendingsData() {
         do {
-            guard let currentVehicle = getCurrentVehicle() else { throw NSError(domain: "CarKit", code: 404) } // TODO: Send real error
+            guard let currentVehicle = getCurrentVehicle() else { throw NetworkError.notFound }
             self.last6MonthsSpendingsData = try spendingRepo.fetchLastSpendingsData(for: currentVehicle.localId, period: .sixMonth)
         } catch {
             
@@ -48,7 +48,7 @@ public extension SpendingStore {
     
     func create(body: SpendingBody) async -> SpendingUIModel? {
         do {
-            guard let currentVehicle = getCurrentVehicle(), let date = body.date?.toDate() else { throw NSError(domain: "CarKit", code: 404) } // TODO: Send real error
+            guard let currentVehicle = getCurrentVehicle(), let date = body.date?.toDate() else { throw NetworkError.notFound }
             
             let entity = body.toEntity(vehicle: currentVehicle, date: date)
             try spendingRepo.insert(entity)

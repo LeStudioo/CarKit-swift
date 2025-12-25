@@ -22,9 +22,9 @@ public struct ProfileScreen: View {
     // MARK: - View
     public var body: some View {
         VStack(spacing: .zero) {
-            NavigationBarView( // TODO: TBL
-                title: "Profile".localized,
-                backButtonText: "Home".localized
+            NavigationBarView(
+                title: "profile_title".localized,
+                backButtonText: "profile_back_button".localized
             )
             
             ScrollView {
@@ -34,7 +34,7 @@ public struct ProfileScreen: View {
                         destination: .profile(.currencies)
                     ) {
                         VStack(alignment: .leading, spacing: .small) {
-                            Text("Currency") // TODO: TBL
+                            Text("profile_field_title_currency".localized)
                                 .customFont(.Text.Small.medium, color: .Gray.dark)
                             
                             HStack(spacing: .medium) {
@@ -55,14 +55,20 @@ public struct ProfileScreen: View {
                     }
                     
                     TypePickerView(
-                        title: "Volume unit", // TODO: TBL
+                        title: "profile_field_title_volume".localized,
                         selectedItem: $viewModel.volumeUnit
                     )
+                    .onChange(of: viewModel.volumeUnit) { _, newValue in
+                        viewModel.volumeRawValue = newValue.rawValue
+                    }
                     
                     TypePickerView(
-                        title: "Distance unit", // TODO: TBL
+                        title: "profile_field_title_distance".localized,
                         selectedItem: $viewModel.distanceUnit
                     )
+                    .onChange(of: viewModel.distanceUnit) { _, newValue in
+                        viewModel.distanceRawValue = newValue.rawValue
+                    }
                 }
             }
             .contentMargins(.all, .large, for: .scrollContent)

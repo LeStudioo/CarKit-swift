@@ -26,10 +26,10 @@ public struct LoginScreen: View {
 
             VStack(spacing: 48) {
                 VStack(spacing: .small) {
-                    Text("Join Us!".localized) // TODO: TBL
+                    Text("login_title".localized)
                         .customFont(.Display.ExtraSmall.medium, color: .Gray.veryDark)
 
-                    Text("We have cookies (just kidding I’m allergic)".localized) // TODO: TBL
+                    Text("login_description".localized)
                         .customFont(.Text.Medium.medium, color: .Gray.mid)
                         .multilineTextAlignment(.center)
                 }

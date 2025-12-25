@@ -10,6 +10,7 @@ import Models
 import Stores
 import SwiftUI
 import Navigation
+import Preferences
 
 extension AddSpendingScreen {
     
@@ -58,12 +59,12 @@ extension AddSpendingScreen.ViewModel {
         return vehicleStore.fetchOne(by: vehicleId ?? "")
     }
     
-    var sectionTitle: String { // TODO: TBL
-        return isStepTwo ? "Specific informations" : "General informations"
+    var sectionTitle: String {
+        return isStepTwo ? "add_spending_section_two_title".localized : "add_spending_section_one_title".localized
     }
     
-    var actionButtonTitle: String { // TODO: TBL
-        return isStepTwo ? "Validate" : "Next"
+    var actionButtonTitle: String {
+        return isStepTwo ? "add_spending_section_two_button".localized : "add_spending_section_one_button".localized
     }
     
     var selectedSpendingType: SpendingType {
@@ -87,17 +88,19 @@ extension AddSpendingScreen.ViewModel {
     }
     
     func createSpending(router: Router<AppDestination>) async {
+        @AppStorageKey(\.currencyCode) var currencyCode
+        
         let body: SpendingBody = .create(
             amount: amount.toDouble(),
             date: date,
             recurrence: .none,
             type: selectedSpendingType,
-            currencyCode: "EUR", // TODO: Add user preference
+            currencyCode: currencyCode,
             name: spendingName.isEmpty ? nil : spendingName,
             service: selectedServiceTag?.toServiceType(),
             literQuantity: fuelAmount.toDouble(),
             elecQuantity: chargeAmount.toDouble(),
-            literUnit: selectedSpendingType == .fuel ? "L" : nil // TODO: Add user preference
+            literUnit: selectedSpendingType == .fuel ? VolumeType.userPreferenceSymbol : nil
         )
         
         let spending = await spendingStore.create(body: body)

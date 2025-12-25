@@ -11,12 +11,18 @@ import Preferences
 
 extension VolumeType: @retroactive TypePickerItem {
     
-    public var name: String { // TODO: TBL
+    public var name: String {
+//        switch self {
+//        case .liter:
+//            return "volume_fuel_liter".localized
+//        case .gallon:
+//            return "volume_fuel_gallon".localized
+//        }
         switch self {
         case .liter:
-            return "volume_fuel_liter".localized
+            return "L"
         case .gallon:
-            return "volume_fuel_gallon".localized
+            return "gal"
         }
     }
     

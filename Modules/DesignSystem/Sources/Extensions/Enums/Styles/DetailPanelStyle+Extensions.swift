@@ -10,12 +10,12 @@ import Models
 
 public extension DetailPanelStyle {
     
-    var actionButtonTitle: String { // TODO: TBL
+    var actionButtonTitle: String {
         switch self {
         case .mileage:
-            return "Update mileage"
+            return "detail_panel_mileage_button".localized
         case .spending:
-            return "Add spending"
+            return "detail_panel_spending_button".localized
         }
     }
     

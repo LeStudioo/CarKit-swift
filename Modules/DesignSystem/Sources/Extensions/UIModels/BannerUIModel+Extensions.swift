@@ -11,11 +11,11 @@ import ToastBannerKit
 
 extension BannerStyle: @retroactive ToastBannerStyleProtocol { }
 
-public extension ToastBannerUIModel { // TODO: TBL
+public extension ToastBannerUIModel {
     
     @MainActor
     static let vehicleCreated: ToastBannerUIModel = .init(
-        title: "Vehicle successfully added !",
+        title: "toast_banner_vehicle_created".localized,
         style: BannerStyle.success
     )
     

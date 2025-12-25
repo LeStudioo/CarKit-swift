@@ -14,6 +14,12 @@ extension ProfileScreen {
     @Observable
     final class ViewModel {
         
+        @ObservationIgnored
+        @AppStorageKey(\.volumeRawValue) var volumeRawValue
+        
+        @ObservationIgnored
+        @AppStorageKey(\.distanceRawValue) var distanceRawValue
+        
         var volumeUnit: VolumeType = .liter
         var distanceUnit: DistanceType = .kilometers
         
@@ -24,9 +30,6 @@ extension ProfileScreen {
 extension ProfileScreen.ViewModel {
     
     func setValues() {
-        @AppStorageKey(\.volumeRawValue) var volumeRawValue
-        @AppStorageKey(\.distanceRawValue) var distanceRawValue
-        
         volumeUnit = VolumeType(rawValue: volumeRawValue) ?? .liter
         distanceUnit = DistanceType(rawValue: distanceRawValue) ?? .kilometers
     }

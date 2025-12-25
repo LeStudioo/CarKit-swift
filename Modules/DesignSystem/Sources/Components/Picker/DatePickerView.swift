@@ -20,7 +20,7 @@ public struct DatePickerView: View {
     // MARK: - View
     public var body: some View {
         VStack(alignment: .leading, spacing: .small) {
-            Text("Date".localized) // TODO: TBL
+            Text("date_picker_title".localized)
                 .customFont(.Text.Small.medium, color: .Gray.dark)
             
             HStack(spacing: .medium) {

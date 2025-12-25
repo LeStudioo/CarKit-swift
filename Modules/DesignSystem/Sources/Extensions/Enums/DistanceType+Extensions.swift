@@ -9,15 +9,21 @@ import Foundation
 import Models
 import Preferences
 
-extension DistanceType: @retroactive TypePickerItem { // TODO: TBL
+extension DistanceType: @retroactive TypePickerItem {
 
     public var name: String {
         switch self {
         case .kilometers:
-            return "distance_kilometers".localized
+            return "km"
         case .miles:
-            return "distance_miles".localized
+            return "mi"
         }
+//        switch self {
+//        case .kilometers:
+//            return "distance_kilometers".localized
+//        case .miles:
+//            return "distance_miles".localized
+//        }
     }
 
     public var symbol: String {

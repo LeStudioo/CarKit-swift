@@ -25,9 +25,9 @@ public struct CurrencyListScreen: View {
     // MARK: -
     public var body: some View {
         VStack(spacing: .zero) {
-            NavigationBarView( // TODO: TBL
-                title: "word_currency".localized,
-                backButtonText: "word_profile".localized
+            NavigationBarView(
+                title: "currency_list_title".localized,
+                backButtonText: "currency_list_back_button".localized
             )
 
             List {

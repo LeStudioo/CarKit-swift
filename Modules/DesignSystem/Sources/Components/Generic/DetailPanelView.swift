@@ -70,7 +70,7 @@ public struct DetailPanelView: View {
                     }
                     
                     ActionButtonView(
-                        title: "View more", // TODO: TBL
+                        title: "detail_panel_view_more".localized,
                         isFullWidth: true,
                         style: .secondary
                     ) { viewMoreAction() }

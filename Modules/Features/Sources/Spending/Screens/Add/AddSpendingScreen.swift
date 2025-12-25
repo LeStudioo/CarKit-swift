@@ -10,6 +10,7 @@ import DesignSystem
 import Utilities
 import Models
 import Navigation
+import Preferences
 
 public struct AddSpendingScreen: View {
     
@@ -28,8 +29,8 @@ public struct AddSpendingScreen: View {
     // MARK: - View
     public var body: some View {
         VStack(spacing: 0) {
-            NavigationBarView( // TODO: TBL
-                title: "Add Spending",
+            NavigationBarView(
+                title: "add_spending_title".localized,
                 subtitle: viewModel.vehicle?.customName ?? "",
                 onCancel: { viewModel.onCancel(dismiss: dismiss) }
             )
@@ -79,11 +80,11 @@ public struct AddSpendingScreen: View {
 extension AddSpendingScreen {
     
     @ViewBuilder
-    private var stepOneView: some View { // TODO: TBL
+    private var stepOneView: some View {
         TextFieldView(
             text: $viewModel.amount,
             config: .init(
-                title: "Amount".localized,
+                title: "add_spending_field_amount".localized,
                 placeholder: viewModel.randomAmountPlaceholder,
                 type: .decimalPad,
                 unit: UserCurrency.symbol
@@ -95,8 +96,8 @@ extension AddSpendingScreen {
     
     @ViewBuilder
     private var stepTwoView: some View {
-        TagsSectionView( // TODO: TBL
-            title: "Type",
+        TagsSectionView(
+            title: "add_spending_field_type".localized,
             items: viewModel.spendingTypeTags,
             selectedItem: $viewModel.selectedSpendingTag
         )
@@ -107,8 +108,8 @@ extension AddSpendingScreen {
             EmptyView()
             
         case .service:
-            TagsSectionView( // TODO: TBL
-                title: "Service",
+            TagsSectionView(
+                title: "add_spending_field_service".localized,
                 items: viewModel.serviceTypeTags,
                 selectedItem: $viewModel.selectedServiceTag
             )
@@ -119,9 +120,9 @@ extension AddSpendingScreen {
         case .insurance, .subscription, .accessories, .sparePart, .other:
             TextFieldView(
                 text: $viewModel.spendingName,
-                config: .init( // TODO: TBL
-                    title: "Name".localized,
-                    placeholder: "Câble USB".localized
+                config: .init(
+                    title: "add_spending_field_name".localized,
+                    placeholder: "add_spending_field_name_placeholder".localized
                 )
             )
             
@@ -132,6 +133,8 @@ extension AddSpendingScreen {
     
     @ViewBuilder
     private var fuelFields: some View {
+        @AppStorageKey(\.volumeRawValue) var volumeRawValue
+        
         if let vehicle = viewModel.vehicle {
             let motorization = vehicle.motorization
             
@@ -139,10 +142,10 @@ extension AddSpendingScreen {
                 TextFieldView(
                     text: $viewModel.fuelAmount,
                     config: .init(
-                        title: "Quantity".localized, // TODO: TBL
+                        title: "add_spending_field_quantity".localized,
                         placeholder: "40.00",
                         type: .decimalPad,
-                        unit: VolumeType.liter.symbol // TODO: Preferences VolumeType.symbol(for: volumeUnitPreference)
+                        unit: VolumeType.userPreferenceSymbol
                     )
                 )
             }
@@ -151,7 +154,7 @@ extension AddSpendingScreen {
                 TextFieldView(
                     text: $viewModel.chargeAmount,
                     config: .init(
-                        title: "Quantity".localized, // TODO: TBL
+                        title: "add_spending_field_quantity".localized,
                         placeholder: "40.00",
                         type: .decimalPad,
                         unit: "kwh"
