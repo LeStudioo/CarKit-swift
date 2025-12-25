@@ -36,7 +36,10 @@ let package = Package(
                 .product(name: "Utilities", package: "Utilities"),
                 .product(name: "ToastBannerKit", package: "ToastBannerKit")
             ],
-            resources: resources
+            resources: resources,
+            swiftSettings: [
+                .defaultIsolation(MainActor.self)
+            ]
         )
     ]
 )

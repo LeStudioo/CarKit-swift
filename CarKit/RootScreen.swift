@@ -39,7 +39,7 @@ struct RootScreen: View {
 
                 if KeychainService.hadRefreshToken {
                     do {
-                        try await userStore.refreshToken()
+//                        try await userStore.refreshToken()
                         appStateService.state = .runningAndConnected
                     } catch {
                         appStateService.state = .runningWithoutInternet

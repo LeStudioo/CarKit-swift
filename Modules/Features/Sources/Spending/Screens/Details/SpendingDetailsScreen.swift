@@ -10,6 +10,8 @@ import Stores
 import Models
 import Navigation
 import DesignSystem
+import Preferences
+import Utilities
 
 public struct SpendingDetailsScreen: View {
     
@@ -30,7 +32,9 @@ public struct SpendingDetailsScreen: View {
             VStack(spacing: 32) {
                 VStack(spacing: 24) {
                     VStack(alignment: .leading) {
-                        Text("\("spending_detail_you".localized) \(spending.amount?.toString()) ") // TODO: \(UserCurrency.symbol)
+                        let amountString = spending.amount?.toString() ?? ""
+                        Text("\("spending_detail_you".localized) \(amountString) \(UserCurrency.symbol)")
+                        
                         if spending.type == .fuel && spending.literQuantity == 0 {
 
                         } else {
@@ -108,10 +112,9 @@ extension SpendingDetailsScreen {
             
             if spending.literQuantity != 0 && spending.amount != 0 {
                 let pricePerLiter = (spending.amount ?? 0) / (spending.literQuantity ?? 0)
-// TODO:                let volumeSymbol = VolumeUnit(rawValue: volumeUnit)?.symbol ?? ""
                 DetailRowView(
                     text: "word_price_per_liter".localized,
-                    value: pricePerLiter.toString()  // TODO: + UserCurrency.symbol + "/" + volumeSymbol
+                    value: pricePerLiter.toString() + UserCurrency.symbol + "/" + VolumeType.userPreferenceSymbol
                 )
             }
             

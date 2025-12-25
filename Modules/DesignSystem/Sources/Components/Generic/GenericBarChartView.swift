@@ -75,7 +75,7 @@ public struct GenericBarChartView: View {
 }
 
 // MARK: - Preview
-//#Preview {
+// #Preview {
 //    VStack(spacing: 32) {
 //        GenericBarChart(data: BarChartData.mocksLast6Months)
 //            .frame(height: 200)
@@ -84,4 +84,4 @@ public struct GenericBarChartView: View {
 //            .frame(height: 200)
 //    }
 //    .padding()
-//}
+// }

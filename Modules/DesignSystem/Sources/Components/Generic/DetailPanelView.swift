@@ -7,6 +7,7 @@
 
 import SwiftUI
 import Models
+import Utilities
 
 public struct DetailPanelView: View {
 
@@ -91,11 +92,11 @@ extension DetailPanelView {
     
     private var labelsView: some View {
         VStack(alignment: .leading, spacing: .tiny) {
-            Text(bigValue.toString()) // TODO: Preference user \(style == .spending ? UserCurrency.symbol : "")
+            Text("\(bigValue.toString()) \(style == .spending ? UserCurrency.symbol : "")")
                 .customFont(.Display.Medium.medium, color: .Gray.veryDark)
                 .contentTransition(.numericText())
 
-            let userSymbol =  "KM" // style == .spending ? UserCurrency.symbol : DistanceUnit.userSymbol // TODO: Preference user \(style == .spending ? UserCurrency.symbol : "")
+            let userSymbol = style == .spending ? UserCurrency.symbol : DistanceType.userPreferenceSymbol
             let averageValue = "\(datas.average)\(userSymbol)"
             let extraPerMonth = style == .spending ? "" : "word_per_month".localized
             Text("\(averageValue) \("word_on_average".localized) \(extraPerMonth)")
@@ -124,11 +125,11 @@ extension DetailPanelView {
 }
 
 // MARK: - Preview
-//#Preview {
+// #Preview {
 //    DetailPanel(
 //        title: "Expenses this month",
 //        style: .spending,
 //        datas: BarChartData.mocksLast6Months
 //    )
 //    .padding()
-//}
+// }

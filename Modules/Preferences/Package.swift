@@ -4,19 +4,22 @@
 import PackageDescription
 
 let package = Package(
-    name: "Utilities",
+    name: "Preferences",
     platforms: [.iOS(.v17)],
     products: [
-        .library(name: "Utilities", targets: ["Utilities"])
+        .library(
+            name: "Preferences",
+            targets: ["Preferences"]
+        )
     ],
     dependencies: [
-        .package(name: "Preferences", path: "../Preferences")
+        .package(name: "Models", path: "../Models")
     ],
     targets: [
         .target(
-            name: "Utilities",
+            name: "Preferences",
             dependencies: [
-                .product(name: "Preferences", package: "Preferences")
+                .product(name: "Models", package: "Models")
             ],
             swiftSettings: [
                 .defaultIsolation(MainActor.self)

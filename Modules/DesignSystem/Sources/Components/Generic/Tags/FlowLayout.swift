@@ -7,7 +7,8 @@
 
 import SwiftUI
 
-struct FlowLayout: Layout {
+@MainActor
+struct FlowLayout: @preconcurrency Layout {
     var alignment: Alignment = .leading
     var spacing: CGFloat = 8
 

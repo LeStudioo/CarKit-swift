@@ -21,11 +21,11 @@ public extension SpendingUIModel {
             
         case .fuel:
             var quantityToDisplay: String = ""
-            let volumeUnit = "L" // TODO: Preference PreferencesService.get(String.self, forKey: .volumeUnit) ?? ""
+            let volumeUnit = VolumeType.userPreferenceSymbol
             let motorization = self.fromVehicle.motorization
             
             if (motorization == .hybrid || motorization == .thermal) && literQuantity != 0 {
-                quantityToDisplay = (self.literQuantity?.toString(maxDigits: 1) ?? "") + " \(volumeUnit)" // VolumeUnit(rawValue: volumeUnit)?.symbol
+                quantityToDisplay = (self.literQuantity?.toString(maxDigits: 1) ?? "") + " \(volumeUnit)"
             }
             
             if !quantityToDisplay.isEmpty && motorization != .thermal {

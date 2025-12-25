@@ -6,13 +6,13 @@
 //
 
 import Foundation
+import Preferences
 
 public struct UserCurrency {
 
-    public static var symbol: String { // TODO: Add preference services
-//        let currencyUnit = PreferencesService.get(String.self, forKey: .currencyUnit) ?? ""
-//        return UserCurrency.getSymbol(forCurrencyCode: currencyUnit) ?? ""
-        return getSymbol(forCurrencyCode: Locale.current.currency?.identifier ?? "USD") ?? ""
+    public static var symbol: String {
+        @AppStorageKey(\.currencyRawValue) var currencyRawValue
+        return Self.getSymbol(forCurrencyCode: currencyRawValue) ?? ""
     }
 
     public static func getSymbol(forCurrencyCode code: String) -> String? {

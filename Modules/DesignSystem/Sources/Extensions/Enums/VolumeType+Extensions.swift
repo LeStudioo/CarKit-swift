@@ -7,6 +7,7 @@
 
 import Foundation
 import Models
+import Preferences
 
 public extension VolumeType {
     
@@ -30,6 +31,16 @@ public extension VolumeType {
     
     static func symbol(for name: String) -> String? {
         return self.allCases.first(where: { $0.name == name })?.symbol
+    }
+    
+}
+
+public extension VolumeType {
+    
+    static var userPreferenceSymbol: String {
+        @AppStorageKey(\.volumeRawValue) var volumeRawValue
+        let volume = VolumeType(rawValue: volumeRawValue)
+        return volume?.symbol ?? VolumeType.liter.rawValue
     }
     
 }
