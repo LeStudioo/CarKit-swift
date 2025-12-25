@@ -9,9 +9,9 @@ import Foundation
 import Models
 import Preferences
 
-public extension VolumeType {
+extension VolumeType: @retroactive TypePickerItem {
     
-    var name: String { // TODO: TBL
+    public var name: String { // TODO: TBL
         switch self {
         case .liter:
             return "volume_fuel_liter".localized
@@ -20,7 +20,7 @@ public extension VolumeType {
         }
     }
     
-    var symbol: String {
+    public var symbol: String {
         switch self {
         case .liter:
             return "L"
@@ -29,7 +29,7 @@ public extension VolumeType {
         }
     }
     
-    static func symbol(for name: String) -> String? {
+    public static func symbol(for name: String) -> String? {
         return self.allCases.first(where: { $0.name == name })?.symbol
     }
     

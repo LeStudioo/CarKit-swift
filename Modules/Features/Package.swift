@@ -9,6 +9,7 @@ let package = Package(
     products: [
         .library(name: "Authentification", targets: ["Authentification"]),
         .library(name: "Home", targets: ["Home"]),
+        .library(name: "Profile", targets: ["Profile"]),
         .library(name: "Vehicle", targets: ["Vehicle"]),
         .library(name: "Spending", targets: ["Spending"])
     ],
@@ -49,6 +50,20 @@ let package = Package(
                 .product(name: "Models", package: "Models"),
                 .product(name: "Stores", package: "Stores"),
                 .product(name: "Navigation", package: "Navigation")
+            ],
+            swiftSettings: [
+                .defaultIsolation(MainActor.self)
+            ]
+        ),
+        
+        .target(
+            name: "Profile",
+            dependencies: [
+                .product(name: "DesignSystem", package: "DesignSystem"),
+                .product(name: "Models", package: "Models"),
+                .product(name: "Stores", package: "Stores"),
+                .product(name: "Navigation", package: "Navigation"),
+                .product(name: "Preferences", package: "Preferences")
             ],
             swiftSettings: [
                 .defaultIsolation(MainActor.self)

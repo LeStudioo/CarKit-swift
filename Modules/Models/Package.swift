@@ -14,10 +14,7 @@ let package = Package(
     ],
     targets: [
         .target(
-            name: "Models",
-            swiftSettings: [
-                .defaultIsolation(MainActor.self)
-            ]
+            name: "Models"
         )
     ]
 )

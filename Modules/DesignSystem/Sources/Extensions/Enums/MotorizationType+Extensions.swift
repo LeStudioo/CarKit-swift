@@ -8,21 +8,20 @@
 import Foundation
 import Models
 
+@MainActor
 extension MotorizationType: @retroactive TypePickerItem {
     
     public var name: String {
-//        switch self {
-//        case .none:
-//            return "Unknown"
-//        case .thermal:
-//            return "motorization_thermal".localized
-//        case .hybrid:
-//            return "motorization_hybrid".localized
-//        case .electric:
-//            return "motorization_electric".localized
-//        }
-        // TODO: To fix
-        return ""
+        switch self {
+        case .none:
+            return "Unknown"
+        case .thermal:
+            return "motorization_thermal".localized
+        case .hybrid:
+            return "motorization_hybrid".localized
+        case .electric:
+            return "motorization_electric".localized
+        }
     }
     
     public static var allCases: [MotorizationType] {

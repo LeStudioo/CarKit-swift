@@ -10,6 +10,7 @@ import NavigationKit
 
 public enum AppDestination: AppDestinationProtocol {
     case shared(SharedDestination)
+    case profile(ProfileDestination)
     case vehicle(VehicleDestination)
     case spending(SpendingDestination)
 }

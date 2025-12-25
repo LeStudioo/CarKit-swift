@@ -24,7 +24,9 @@ public struct HomeScreen: View {
     // MARK: - View
     public var body: some View {
         VStack(spacing: .zero) {
-            NavigationBarView(title: "CarKit") { }
+            NavigationBarView(title: "CarKit") {
+                router.push(.profile(.home))
+            }
             
             myVehiclesHeaderView
                 .padding(.horizontal, .large)

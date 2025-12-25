@@ -9,6 +9,7 @@ import Foundation
 import Navigation
 import SwiftUI
 import Core
+import Profile
 import Vehicle
 import Spending
 
@@ -19,6 +20,8 @@ extension AppDestination {
         switch destination {
         case .shared(let sharedDestination):
             sharedView(sharedDestination)
+        case .profile(let profileDestination):
+            profileView(profileDestination)
         case .vehicle(let vehicleDestination):
             vehicleView(vehicleDestination)
         case .spending(let spendingDestination):
@@ -35,6 +38,16 @@ extension AppDestination {
         switch destination {
         case .sfSafari(let url):
             SFSafariScreen(url: url)
+        }
+    }
+    
+    @ViewBuilder
+    static private func profileView(_ destination: ProfileDestination) -> some View {
+        switch destination {
+        case .home:
+            ProfileScreen()
+        case .currencies:
+            CurrencyListScreen()
         }
     }
     

@@ -21,6 +21,7 @@
 		D92E1D3B2EEA88D100B20317 /* Utilities in Frameworks */ = {isa = PBXBuildFile; productRef = D92E1D3A2EEA88D100B20317 /* Utilities */; };
 		D97862352EEC447900C2D16B /* Spending in Frameworks */ = {isa = PBXBuildFile; productRef = D97862342EEC447900C2D16B /* Spending */; };
 		D98DC46F2EFD44EB006F06AB /* Preferences in Frameworks */ = {isa = PBXBuildFile; productRef = D98DC46E2EFD44EB006F06AB /* Preferences */; };
+		D9C00C782EFD64A8002E75A8 /* Profile in Frameworks */ = {isa = PBXBuildFile; productRef = D9C00C772EFD64A8002E75A8 /* Profile */; };
 		D9FA81F52EE89F3800BC35F6 /* README.md in Resources */ = {isa = PBXBuildFile; fileRef = D9FA81F42EE89F3800BC35F6 /* README.md */; };
 /* End PBXBuildFile section */
 
@@ -75,6 +76,7 @@
 				D92E1CAB2EE970E300B20317 /* Repositories in Frameworks */,
 				D92E1CA92EE970DF00B20317 /* Persistence in Frameworks */,
 				D92E1CAD2EE970E600B20317 /* Navigation in Frameworks */,
+				D9C00C782EFD64A8002E75A8 /* Profile in Frameworks */,
 				D92E1D3B2EEA88D100B20317 /* Utilities in Frameworks */,
 				D92E1D362EEA039E00B20317 /* Vehicle in Frameworks */,
 				D92CC9D32EFC652300EA60DB /* Core in Frameworks */,
@@ -154,6 +156,7 @@
 				D92CC9D22EFC652300EA60DB /* Core */,
 				D92CC9D42EFC652800EA60DB /* Authentification */,
 				D98DC46E2EFD44EB006F06AB /* Preferences */,
+				D9C00C772EFD64A8002E75A8 /* Profile */,
 			);
 			productName = Dreevy;
 			productReference = D90512A82EE8493500AD088B /* CarKit.app */;
@@ -539,6 +542,10 @@
 		D98DC46E2EFD44EB006F06AB /* Preferences */ = {
 			isa = XCSwiftPackageProductDependency;
 			productName = Preferences;
+		};
+		D9C00C772EFD64A8002E75A8 /* Profile */ = {
+			isa = XCSwiftPackageProductDependency;
+			productName = Profile;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

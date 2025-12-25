@@ -13,8 +13,8 @@ public struct PreferencesKeys {
         PreferencesKey(key: "isHapticFeedbackEnabled", defaultValue: false)
     }
     
-    public var currencyRawValue: PreferencesKey<String> {
-        PreferencesKey(key: "currencyRawValue", defaultValue: Locale.current.currency?.identifier ?? "")
+    public var currencyCode: PreferencesKey<String> {
+        PreferencesKey(key: "currencyCode", defaultValue: Locale.current.currency?.identifier ?? "")
     }
     
     public var volumeRawValue: PreferencesKey<String> {

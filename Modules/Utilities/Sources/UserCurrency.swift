@@ -11,8 +11,8 @@ import Preferences
 public struct UserCurrency {
 
     public static var symbol: String {
-        @AppStorageKey(\.currencyRawValue) var currencyRawValue
-        return Self.getSymbol(forCurrencyCode: currencyRawValue) ?? ""
+        @AppStorageKey(\.currencyCode) var currencyCode
+        return Self.getSymbol(forCurrencyCode: currencyCode) ?? ""
     }
 
     public static func getSymbol(forCurrencyCode code: String) -> String? {
