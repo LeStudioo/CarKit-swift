@@ -45,6 +45,18 @@ public final class SpendingRepository: GenericRepository<SpendingEntity> {
         return try container.mainContext.fetch(descriptor)
     }
     
+    public func fetchAll(for vehicleId: UUID, startDate: Date, endDate: Date) throws -> [SpendingEntity] {
+        var descriptor = FetchDescriptor<SpendingEntity>(
+            predicate: #Predicate {
+                $0.vehicle.localId == vehicleId &&
+                $0.date >= startDate &&
+                $0.date <= endDate
+            }
+        )
+        
+        return try container.mainContext.fetch(descriptor)
+    }
+    
     public func fetchLastSpendingsData(for vehicleId: UUID, period: LastSpendingsPeriod) throws -> [BarChartUIModel] {
         let calendar = Calendar.current
         
@@ -75,6 +87,16 @@ public final class SpendingRepository: GenericRepository<SpendingEntity> {
         }
         
         return barChartData.sorted { $0.date < $1.date }
+    }
+    
+    public func fetchTotalAmount(for vehicleId: UUID) throws -> Double {
+        var descriptor = FetchDescriptor<SpendingEntity>(
+            predicate: #Predicate { $0.vehicle.localId == vehicleId }
+        )
+        descriptor.propertiesToFetch = [\.amount]
+        let results = try container.mainContext.fetch(descriptor)
+
+        return results.reduce(0) { $0 + ($1.amount ?? 0) }
     }
     
 }

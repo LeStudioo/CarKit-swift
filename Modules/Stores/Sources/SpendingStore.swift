@@ -37,6 +37,31 @@ public extension SpendingStore {
         }
     }
     
+    func fetchCurrenYearSpendings() -> [SpendingUIModel] {
+        do {
+            guard let currentVehicle = getCurrentVehicle() else { throw NetworkError.notFound }
+            let spendings = try spendingRepo.fetchAll(
+                for: currentVehicle.localId,
+                startDate: .now.startOfYear,
+                endDate: .now.endOfYear
+            )
+            let spendingsUIModel = spendings.map { $0.toUIModel() }
+            return spendingsUIModel
+        } catch {
+            return []
+        }
+    }
+    
+    func fetchTotalAmountSpendings() -> Double {
+        do {
+            guard let currentVehicle = getCurrentVehicle() else { throw NetworkError.notFound }
+            let totalAmount = try spendingRepo.fetchTotalAmount(for: currentVehicle.localId)
+            return totalAmount
+        } catch {
+            return 0.0
+        }
+    }
+    
     func fetchLast6MonthsSpendingsData() {
         do {
             guard let currentVehicle = getCurrentVehicle() else { throw NetworkError.notFound }

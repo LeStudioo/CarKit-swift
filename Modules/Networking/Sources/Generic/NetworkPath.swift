@@ -7,22 +7,22 @@
 
 import Foundation
 
-struct NetworkPath { // TODO: CHange to enum with static
+enum NetworkPath {
     static let baseURL: String = "https://carkit.lazyy.fr"
 
-    struct Auth {
+    enum Auth {
         static let apple: String = "/auth/apple"
         static let google: String = "/auth/google"
     }
 
-    struct User {
+    enum User {
         static let me: String = "/user/me" // swiftlint:disable:this identifier_name
         static func refreshToken(refreshToken: String) -> String {
             return "/user/refresh-token/\(refreshToken)"
         }
     }
     
-    struct Vehicle {
+    enum Vehicle {
         static func path() -> String {
             return "/vehicles"
         }
@@ -31,7 +31,7 @@ struct NetworkPath { // TODO: CHange to enum with static
         }
     }
 
-    struct Spending {
+    enum Spending {
         static func path(vehicleId: String) -> String {
             return "/vehicles/\(vehicleId)/spendings"
         }
@@ -40,7 +40,7 @@ struct NetworkPath { // TODO: CHange to enum with static
         }
     }
     
-    struct Mileage {
+    enum Mileage {
         static func path(vehicleId: String) -> String {
             return "/vehicles/\(vehicleId)/mileages"
         }
@@ -49,19 +49,19 @@ struct NetworkPath { // TODO: CHange to enum with static
         }
     }
 
-    struct Service {
+    enum Service {
         static func manage(carId: String) -> String {
             return "/service/\(carId)"
         }
     }
 
-    struct Part {
+    enum Part {
         static func manage(carId: String) -> String {
             return "/part/\(carId)"
         }
     }
 
-    struct FullTank {
+    enum FullTank {
         static func manage(carId: String) -> String {
             return "/full-tank/\(carId)"
         }

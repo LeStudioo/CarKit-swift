@@ -20,10 +20,14 @@ public struct SpendingsListScreen: View {
     // MARK: - View
     public var body: some View {
         VStack(spacing: .zero) {
-            NavigationBarView(title: "Car spendings") // TODO: TBL
+            NavigationBarView(title: "spendings_list_title".localized)
             
             List {
-                Text("Last expenses") // TODO: TBL
+                SpendingsChartView()
+                    .disableRowStyle()
+                    .padding(.bottom, .huge)
+                
+                Text("spendings_list_last_expenses".localized)
                     .customFont(.Display.ExtraSmall.bold, color: .Gray.veryDark)
                     .fullWidth(.leading)
                     .disableRowStyle()
