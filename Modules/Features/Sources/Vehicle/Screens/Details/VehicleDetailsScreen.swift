@@ -46,6 +46,8 @@ public struct VehicleDetailsScreen: View {
                                 viewMoreAction: { router.push(.spending(.list)) }
                             )
                             
+                            VehicleInfoRowView(vehicle: vehicle)
+                            
                             Rectangle()
                                 .fill(Color.clear)
                                 .frame(height: 32)

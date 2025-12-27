@@ -37,7 +37,7 @@ public final class SpendingRepository: GenericRepository<SpendingEntity> {
         
         var descriptor = FetchDescriptor<SpendingEntity>(
             predicate: #Predicate { $0.vehicle.localId == vehicleId },
-            sortBy: [SortDescriptor(\.createdAt, order: .reverse)]
+            sortBy: [SortDescriptor(\.date, order: .reverse)]
         )
         descriptor.fetchOffset = page * pageSize
         descriptor.fetchLimit = pageSize

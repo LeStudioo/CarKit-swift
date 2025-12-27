@@ -146,6 +146,18 @@
 "spending_chart_year" = "Cette année";
 
 /*  */
+"spending_details_date" = "Date";
+
+/*  */
+"spending_details_price_per_liter" = "Prix par litre";
+
+/*  */
+"spending_details_service_type" = "Type";
+
+/*  */
+"spending_details_title" = "Tu as payé %@ pour %@";
+
+/*  */
 "spending_type_accessories" = "Accessoires";
 
 /*  */
@@ -177,4 +189,22 @@
 
 /*  */
 "toast_banner_vehicle_created" = "Véhicule ajouté avec succès !";
+
+/*  */
+"vehicle_info_brand" = "Marque";
+
+/*  */
+"vehicle_info_model" = "Modèle";
+
+/*  */
+"vehicle_info_name" = "Nom";
+
+/*  */
+"vehicle_info_title" = "Informations";
+
+/*  */
+"vehicle_info_type" = "Type";
+
+/*  */
+"vehicle_info_year" = "Année";
 

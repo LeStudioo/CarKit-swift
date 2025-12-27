@@ -32,16 +32,13 @@ public struct SpendingDetailsScreen: View {
             VStack(spacing: 32) {
                 VStack(spacing: 24) {
                     VStack(alignment: .leading) {
-                        let amountString = spending.amount?.toString() ?? ""
-                        Text("\("spending_detail_you".localized) \(amountString) \(UserCurrency.symbol)")
+                        let stringFormat = "spending_details_title".localized
+                        let amount = (spending.amount?.toString() ?? "0") + UserCurrency.symbol
+                        let stringValue = String(format: stringFormat, amount, spending.title)
                         
-                        if spending.type == .fuel && spending.literQuantity == 0 {
-
-                        } else {
-                            Text("\("spending_detail_for".localized) \(spending.title)")
-                                .multilineTextAlignment(.leading)
-                                .lineLimit(2)
-                        }
+                        Text(stringValue)
+                            .multilineTextAlignment(.leading)
+                            .lineLimit(2)
                     }
                     .customFont(.Display.Medium.bold, color: .Gray.veryDark)
                     .fullWidth(.leading)
@@ -99,13 +96,13 @@ extension SpendingDetailsScreen {
     private func detailRowsView(spending: SpendingUIModel) -> some View {
         VStack(spacing: 8) {
             DetailRowView(
-                text: "word_date".localized,
+                text: "spending_details_date".localized,
                 value: spending.date.formatted(date: .complete, time: .omitted).capitalized
             )
             
             if let service = spending.service {
                 DetailRowView(
-                    text: "word_type".localized,
+                    text: "spending_details_service_type".localized,
                     value: service.name
                 )
             }
@@ -113,7 +110,7 @@ extension SpendingDetailsScreen {
             if spending.literQuantity != 0 && spending.amount != 0 {
                 let pricePerLiter = (spending.amount ?? 0) / (spending.literQuantity ?? 0)
                 DetailRowView(
-                    text: "word_price_per_liter".localized,
+                    text: "spending_details_price_per_liter".localized,
                     value: pricePerLiter.toString() + UserCurrency.symbol + "/" + VolumeType.userPreferenceSymbol
                 )
             }

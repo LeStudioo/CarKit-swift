@@ -67,7 +67,7 @@ extension AddVehicleScreen.ViewModel {
             model: model,
             customName: customName,
             imageData: nil,
-            year: year.toInt(),
+            year: Int(year),
             motorization: motorization
         )
         
