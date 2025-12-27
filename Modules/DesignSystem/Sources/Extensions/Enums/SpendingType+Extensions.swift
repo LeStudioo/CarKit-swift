@@ -10,33 +10,36 @@ import Models
 
 extension SpendingType {
     
-    public var name: String { // TODO: TBL
+    @MainActor
+    public var name: String {
         switch self {
         case .vehiclePart:
-            "Vehicle part"
+            "spending_type_vehicle_part".localized
         case .service:
-            "Service (carwash, ...)"
+            "spending_type_service".localized
         case .fuel:
-            "Essence/Charge"
+            "spending_type_fuel".localized
         case .insurance:
-            "Insurance/Taxes"
+            "spending_type_insurance".localized
         case .subscription:
-            "Subscription"
+            "spending_type_subscription".localized
         case .accessories:
-            "Accessories"
+            "spending_type_accessories".localized
         case .sparePart:
-            "Spare part"
+            "spending_type_spare_part".localized
         case .other:
-            "Other"
+            "spending_type_other".localized
         case .none:
             "Unknown"
         }
     }
     
+    @MainActor
     public static var tags: [TagUIModel] {
         return SpendingType.allCases.map { $0.toTag() }
     }
     
+    @MainActor
     private func toTag() -> TagUIModel {
         return .init(title: name, rawValue: rawValue)
     }

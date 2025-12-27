@@ -1,4 +1,37 @@
 /*  */
+"add_spending_field_amount" = "Amount";
+
+/*  */
+"add_spending_field_name" = "Name";
+
+/*  */
+"add_spending_field_name_placeholder" = "USB Cable";
+
+/*  */
+"add_spending_field_quantity" = "Quantity";
+
+/*  */
+"add_spending_field_service" = "Service";
+
+/*  */
+"add_spending_field_type" = "Type";
+
+/*  */
+"add_spending_section_one_button" = "Next";
+
+/*  */
+"add_spending_section_one_title" = "General informations";
+
+/*  */
+"add_spending_section_two_button" = "Validate";
+
+/*  */
+"add_spending_section_two_title" = "Specific informations";
+
+/*  */
+"add_spending_title" = "Add Spending";
+
+/*  */
 "add_vehicle_back_button" = "My vehicles";
 
 /*  */
@@ -32,6 +65,24 @@
 "add_vehicle_title" = "Add vehicle";
 
 /*  */
+"currency_list_back_button" = "Profile";
+
+/*  */
+"currency_list_title" = "Currency";
+
+/*  */
+"date_picker_title" = "Date";
+
+/*  */
+"detail_panel_mileage_button" = "Update mileage";
+
+/*  */
+"detail_panel_spending_button" = "Add spending";
+
+/*  */
+"detail_panel_view_more" = "View more";
+
+/*  */
 "home_button_add_vehicle" = "Add vehicle";
 
 /*  */
@@ -47,6 +98,12 @@
 "home_my_vehicle_header" = "My vehicles";
 
 /*  */
+"login_description" = "We have cookies (just kidding I’m allergic)";
+
+/*  */
+"login_title" = "Join Us!";
+
+/*  */
 "motorization_electric" = "Electric";
 
 /*  */
@@ -54,4 +111,70 @@
 
 /*  */
 "motorization_thermal" = "Thermal";
+
+/*  */
+"profile_back_button" = "Home";
+
+/*  */
+"profile_field_title_currency" = "Currency";
+
+/*  */
+"profile_field_title_distance" = "Distance unit";
+
+/*  */
+"profile_field_title_volume" = "Volume unit";
+
+/*  */
+"profile_title" = "Profile";
+
+/*  */
+"service_car_wash" = "Car wash";
+
+/*  */
+"service_oil_change" = "Oil change";
+
+/*  */
+"service_vacuum" = "Vacuum";
+
+/*  */
+"spending_chart_month" = "This month";
+
+/*  */
+"spending_chart_total" = "Total spend";
+
+/*  */
+"spending_chart_year" = "This year";
+
+/*  */
+"spending_type_accessories" = "Accessories";
+
+/*  */
+"spending_type_fuel" = "Gasoline/Charge";
+
+/*  */
+"spending_type_insurance" = "Insurances/Taxes";
+
+/*  */
+"spending_type_other" = "Other";
+
+/*  */
+"spending_type_service" = "Service (carwash, ...)";
+
+/*  */
+"spending_type_spare_part" = "Spare part";
+
+/*  */
+"spending_type_subscription" = "Subscription";
+
+/*  */
+"spending_type_vehicle_part" = "Vehicle part";
+
+/*  */
+"spendings_list_last_expenses" = "Last expenses";
+
+/*  */
+"spendings_list_title" = "Vehicle expenses";
+
+/*  */
+"toast_banner_vehicle_created" = "Vehicle successfully added!";
 

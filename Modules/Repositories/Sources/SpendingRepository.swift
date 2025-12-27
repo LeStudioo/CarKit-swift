@@ -46,7 +46,7 @@ public final class SpendingRepository: GenericRepository<SpendingEntity> {
     }
     
     public func fetchAll(for vehicleId: UUID, startDate: Date, endDate: Date) throws -> [SpendingEntity] {
-        var descriptor = FetchDescriptor<SpendingEntity>(
+        let descriptor = FetchDescriptor<SpendingEntity>(
             predicate: #Predicate {
                 $0.vehicle.localId == vehicleId &&
                 $0.date >= startDate &&

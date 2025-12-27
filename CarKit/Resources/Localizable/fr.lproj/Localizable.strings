@@ -1,4 +1,37 @@
 /*  */
+"add_spending_field_amount" = "Montant";
+
+/*  */
+"add_spending_field_name" = "Nom";
+
+/*  */
+"add_spending_field_name_placeholder" = "Câble USB";
+
+/*  */
+"add_spending_field_quantity" = "Quantité";
+
+/*  */
+"add_spending_field_service" = "Service";
+
+/*  */
+"add_spending_field_type" = "Type";
+
+/*  */
+"add_spending_section_one_button" = "Suivant";
+
+/*  */
+"add_spending_section_one_title" = "Informations générales";
+
+/*  */
+"add_spending_section_two_button" = "Valider";
+
+/*  */
+"add_spending_section_two_title" = "Informations spécifiques";
+
+/*  */
+"add_spending_title" = "Ajouter une dépense";
+
+/*  */
 "add_vehicle_back_button" = "Mes véhicules";
 
 /*  */
@@ -32,6 +65,24 @@
 "add_vehicle_title" = "Ajouter un véhicule";
 
 /*  */
+"currency_list_back_button" = "Profil";
+
+/*  */
+"currency_list_title" = "Monnaie";
+
+/*  */
+"date_picker_title" = "Date";
+
+/*  */
+"detail_panel_mileage_button" = "Mettre à jour le kilométrage";
+
+/*  */
+"detail_panel_spending_button" = "Ajouter une dépense";
+
+/*  */
+"detail_panel_view_more" = "Voir plus";
+
+/*  */
 "home_button_add_vehicle" = "Ajouter un véhicule";
 
 /*  */
@@ -47,6 +98,12 @@
 "home_my_vehicle_header" = "Mes véhicules";
 
 /*  */
+"login_description" = "Nous avons des cookies (je plaisante, j'y suis allergique).";
+
+/*  */
+"login_title" = "Rejoignez-nous !";
+
+/*  */
 "motorization_electric" = "Électrique";
 
 /*  */
@@ -54,4 +111,70 @@
 
 /*  */
 "motorization_thermal" = "Thermique";
+
+/*  */
+"profile_back_button" = "Accueil";
+
+/*  */
+"profile_field_title_currency" = "Monnaie";
+
+/*  */
+"profile_field_title_distance" = "Unité de distance";
+
+/*  */
+"profile_field_title_volume" = "Unité de volume";
+
+/*  */
+"profile_title" = "Profil";
+
+/*  */
+"service_car_wash" = "Car wash";
+
+/*  */
+"service_oil_change" = "Vidange d'huile";
+
+/*  */
+"service_vacuum" = "Aspirateur";
+
+/*  */
+"spending_chart_month" = "Ce mois-ci";
+
+/*  */
+"spending_chart_total" = "Dépenses totales";
+
+/*  */
+"spending_chart_year" = "Cette année";
+
+/*  */
+"spending_type_accessories" = "Accessoires";
+
+/*  */
+"spending_type_fuel" = "Essence/Charge";
+
+/*  */
+"spending_type_insurance" = "Assurances/Taxes";
+
+/*  */
+"spending_type_other" = "Autre";
+
+/*  */
+"spending_type_service" = "Service (carwash, ...)";
+
+/*  */
+"spending_type_spare_part" = "Pièce de rechange";
+
+/*  */
+"spending_type_subscription" = "Abonnement";
+
+/*  */
+"spending_type_vehicle_part" = "Pièce automobile";
+
+/*  */
+"spendings_list_last_expenses" = "Dernières dépenses";
+
+/*  */
+"spendings_list_title" = "Dépenses du véhicule";
+
+/*  */
+"toast_banner_vehicle_created" = "Véhicule ajouté avec succès !";
 

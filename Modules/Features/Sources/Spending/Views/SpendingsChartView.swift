@@ -61,17 +61,17 @@ struct SpendingsChartView: View {
             
             HStack(spacing: .large) {
                 PieChartStatsRowView(
-                    text: "spending_chart_total".localized, // TODO: TBL
+                    text: "spending_chart_total".localized,
                     value: Int(totalAmount)
                 )
                 
                 PieChartStatsRowView(
-                    text: "spending_chart_month".localized, // TODO: TBL
+                    text: "spending_chart_month".localized,
                     value: Int(currentMonthAmount)
                 )
                 
                 PieChartStatsRowView(
-                    text: "spending_chart_year".localized, // TODO: TBL
+                    text: "spending_chart_year".localized,
                     value: Int(currentYearAmount)
                 )
                 
